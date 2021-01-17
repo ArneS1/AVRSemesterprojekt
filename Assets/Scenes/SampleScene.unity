@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 1016529174}
   - component: {fileID: 1016529173}
   - component: {fileID: 1016529172}
+  - component: {fileID: 1016529175}
   m_Layer: 8
   m_Name: Left Hand
   m_TagString: Untagged
@@ -1029,6 +1030,21 @@ MonoBehaviour:
   m_MoveObjectIn: 0
   m_MoveObjectOut: 0
   m_PoseProvider: {fileID: 0}
+--- !u!114 &1016529175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016529170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5d1d66919bc9e4dab21335764fdb5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanner: {fileID: 1939911505}
+  LeftHand: {fileID: 1016529174}
+  button: 2
 --- !u!1 &1097999791
 GameObject:
   m_ObjectHideFlags: 0
