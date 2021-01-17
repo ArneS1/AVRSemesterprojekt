@@ -64,9 +64,6 @@ public class MovementProvider : LocomotionProvider
     {
         if(device.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 position))
         {
-            Debug.Log("Position x:" + position.x);
-            Debug.Log("Position y:" + position.y);
-            Debug.Log("Position:" + position);
             StartMove(position);
         }
     }
