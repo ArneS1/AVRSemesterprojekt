@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trash
+  - Hand
+  - Backpack
+  - Toolbelt
   layers:
   - Default
   - TransparentFX
