@@ -13,6 +13,11 @@ public class ToolController : MonoBehaviour
     public GameObject fishingNet;
     public GameObject pliers;
 
+    public GameObject pliersToFind;
+    private bool pliersFound = false;
+    public GameObject fishingNetToFind;
+    private bool fishingNetFound = false;
+
     private bool fishingNetEquipped = false;
     private bool pliersEquipped = false;
 
@@ -37,7 +42,6 @@ public class ToolController : MonoBehaviour
         checkIfToolbeltisGrabbed();
 
 
-
     }
 
     private void checkIfToolbeltisGrabbed()
@@ -46,8 +50,8 @@ public class ToolController : MonoBehaviour
         {
             if (pressed)
             {
-                Debug.Log("Button pressed");
-                if (isTouchingToolbelt && !(pliersEquipped) && !(fishingNetEquipped))
+                //Debug.Log("Button pressed");
+                if (isTouchingToolbelt && !(pliersEquipped) && !(fishingNetEquipped) && pliersFound)
                 {
                     pliers.SetActive(true);
                     pliersEquipped = true;
@@ -71,8 +75,8 @@ public class ToolController : MonoBehaviour
         {
             if (pressed)
             {
-                Debug.Log("Button pressed");
-                if (isTouchingBackpack && !(fishingNetEquipped) && !(pliersEquipped))
+                //Debug.Log("Button pressed");
+                if (isTouchingBackpack && !(fishingNetEquipped) && !(pliersEquipped)  && fishingNetFound)
                 {
                     fishingNet.SetActive(true);
                     fishingNetEquipped = true;
@@ -100,7 +104,6 @@ public class ToolController : MonoBehaviour
 
             isTouchingToolbelt = true;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -118,5 +121,15 @@ public class ToolController : MonoBehaviour
             toolSwitched = false;
 
         }
+    }
+
+    public void FindFishingNet(){
+        fishingNetFound = true;
+        fishingNetToFind.SetActive(false);
+    }
+
+    public void FindPliers(){
+        pliersFound = true;
+        pliersToFind.SetActive(false);
     }
 }

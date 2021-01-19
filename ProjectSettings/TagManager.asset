@@ -10,8 +10,8 @@ TagManager:
   - Toolbelt
   - pathTarget
   - Fire
-  - Plier
-  - Piler
+  - FishingNet
+  - Pliers
   layers:
   - Default
   - TransparentFX
