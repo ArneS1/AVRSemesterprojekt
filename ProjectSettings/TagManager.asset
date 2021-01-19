@@ -9,6 +9,9 @@ TagManager:
   - Backpack
   - Toolbelt
   - pathTarget
+  - Fire
+  - Plier
+  - Piler
   layers:
   - Default
   - TransparentFX
