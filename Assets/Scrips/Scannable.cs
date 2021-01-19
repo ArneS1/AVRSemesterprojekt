@@ -5,15 +5,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Scannable : XRSimpleInteractable
 {
-    private bool showInfo = false;
-
-    public GameObject info;
+    public string infoText;
+    private InfoHandler infoHandler;
     public Material highlightMaterial; // Shimmer around the fish while scanning
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(infoHandler == null){
+            infoHandler = GameObject.Find("Scanner").GetComponentInChildren<InfoHandler>();
+        }
     }
 
     // Update is called once per frame
@@ -23,23 +24,12 @@ public class Scannable : XRSimpleInteractable
     }
 
     protected override void OnHoverEntered(XRBaseInteractor interactor) {
-        Debug.Log("Fish Scanned!");
-        enableInfo();
+        infoHandler.setInfoText(infoText);
+        infoHandler.enableInfoScreen();
     }
 
     protected override void OnHoverExited(XRBaseInteractor interactor) {
-        Debug.Log("Fish Not Scanned!");
-        disableInfo();
-    }
-
-    private void enableInfo(){
-        showInfo = true;
-        info.SetActive(true);
-    }
-
-    private void disableInfo(){
-        showInfo = false;
-        info.SetActive(false);
+        infoHandler.disableInfoScreen();
     }
         
 }

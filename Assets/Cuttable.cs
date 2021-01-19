@@ -19,8 +19,6 @@ public class Cuttable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collided with" + other.tag);
-        
         if(other.gameObject.CompareTag("Plier")){
 
             Debug.Log("I was cut by a Plier.");

@@ -38,7 +38,7 @@ public class UnderwaterAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("COLLIDED");
+        //Debug.Log("COLLIDED");
         if (other.tag == "pathTarget")
         {
             chooseNewTarget();
