@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TrashCollector : MonoBehaviour
 {
+    public GameObject GameStats;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class TrashCollector : MonoBehaviour
 
             other.gameObject.SetActive(false);
             Debug.Log("Trash Collected.");
-            //TODO: Score 
+            GameStats.GetComponent<GameStats>().trashCollected(1);
         }
     }
 }

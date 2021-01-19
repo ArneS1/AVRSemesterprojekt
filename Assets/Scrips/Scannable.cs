@@ -9,6 +9,8 @@ public class Scannable : XRSimpleInteractable
     private InfoHandler infoHandler;
     public Material highlightMaterial; // Shimmer around the fish while scanning
 
+    public GameObject GameStats;
+
     // Start is called before the first frame update
     void Start()
     {
