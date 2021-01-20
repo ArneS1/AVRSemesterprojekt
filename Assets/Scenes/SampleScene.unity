@@ -623,6 +623,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trapped Ghost fish
       objectReference: {fileID: 0}
+    - target: {fileID: 7720172333724047195, guid: f1b76b2ad2cf58446a6debc71674abdb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7720172333765343867, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2079,11 +2084,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength: 0.3
-  speed: 0
+  speed: 0.3
   targets:
+  - {fileID: 273466687}
   - {fileID: 184513427}
-  - {fileID: 479979171}
+  - {fileID: 966011490}
   - {fileID: 1564728592}
+  - {fileID: 1247844975}
+  - {fileID: 479979171}
+  - {fileID: 990316314}
+--- !u!135 &509251808
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509251806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.83
+  m_Center: {x: 0, y: -0.36, z: 0}
+--- !u!54 &509251809
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509251806}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &539002535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7795,6 +7833,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -76.665
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996389660420556807, guid: be973089460fb8143ba824f7b4db39ad,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496759905110620151, guid: be973089460fb8143ba824f7b4db39ad,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3181350136113057941, guid: be973089460fb8143ba824f7b4db39ad,
         type: 3}

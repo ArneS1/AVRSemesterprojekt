@@ -17,7 +17,7 @@ public class UnderwaterAI : MonoBehaviour
 
     void Start()
     {
-        target = targets[0];
+        chooseNewTarget();
     }
 
     // Update is called once per frame
@@ -38,7 +38,6 @@ public class UnderwaterAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("COLLIDED");
         if (other.tag == "pathTarget")
         {
             chooseNewTarget();
