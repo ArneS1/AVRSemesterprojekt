@@ -8,7 +8,6 @@ public class Scannable : XRSimpleInteractable
     public string infoText;
     private InfoHandler infoHandler;
     public Material highlightMaterial; // Shimmer around the fish while scanning
-
     public GameObject GameStats;
 
     // Start is called before the first frame update
@@ -28,6 +27,8 @@ public class Scannable : XRSimpleInteractable
     protected override void OnHoverEntered(XRBaseInteractor interactor) {
         infoHandler.setInfoText(infoText);
         infoHandler.enableInfoScreen();
+        GameStats.GetComponent<GameStats>().addNewFish(infoText);
+        
     }
 
     protected override void OnHoverExited(XRBaseInteractor interactor) {

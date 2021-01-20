@@ -21,6 +21,9 @@ public class ToolController : MonoBehaviour
     private bool isTouchingBackpack = false;
     private bool isTouchingToolbelt = false;
 
+    private bool fishingNetCollected = false;
+    private bool pliersCollected = false;
+
 
 
     // Start is called before the first frame update
@@ -42,7 +45,7 @@ public class ToolController : MonoBehaviour
 
     private void checkIfToolbeltisGrabbed()
     {
-        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched))
+        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched) && pliersCollected)
         {
             if (pressed)
             {
@@ -67,7 +70,7 @@ public class ToolController : MonoBehaviour
 
     private void checkIfBackPackisGrabbed()
     {
-        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched))
+        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched) && fishingNetCollected)
         {
             if (pressed)
             {
@@ -101,6 +104,37 @@ public class ToolController : MonoBehaviour
             isTouchingToolbelt = true;
         }
 
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name =="FishingNetItem")
+        {
+            if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !pliersEquipped)
+            {
+                if (pressed)
+                {
+                    fishingNetCollected = true;
+                    fishingNetEquipped = true;
+                    fishingNet.SetActive(true);
+                    other.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        if (other.name == "PliersItem")
+        {
+            if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !fishingNetEquipped)
+            {
+                if (pressed)
+                {
+                    pliersCollected = true;
+                    pliersEquipped = true;
+                    pliers.SetActive(true);
+                    other.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
