@@ -70,28 +70,19 @@ public class MovementProvider : LocomotionProvider
 
     private void StartMove(Vector2 position)
     {
-            Vector3 headRotation = new Vector3(0, head.transform.eulerAngles.y, 0);
-            Vector3 direction = Camera.main.transform.forward;
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
 
-            direction *= position.y;
+        forward *= position.y;
+        right *= position.x;
 
-            Vector3 movement = direction * speed;
+        Vector3 movement = (forward + right) * speed;
 
-            characterController.Move(movement * Time.deltaTime);
-        
-        /*Apply position to heads vector
-        //Vector3 direction_old = new Vector3(position.x, 0 , position.y);
-        Vector3 headRotation = new Vector3(0, head.transform.eulerAngles.y, 0);
+        if(Camera.main.transform.position.y > 0.5 && movement.y > 0){
+            movement.y = 0;
+        }
 
-        Vector3 direction = Camera.main.transform.forward * position;
-
-        //Rotate the input direction by the horizontal head rotation
-        direction = Quaternion.Euler(headRotation) * direction;
-
-        //Apply speed and move
-        Vector3 movement = direction * speed;
         characterController.Move(movement * Time.deltaTime);
-        */
     }
 
     private void ApplyGravity(){

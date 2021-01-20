@@ -2706,7 +2706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
-  speed: 10
+  speed: 5
   gravity: 0
   controllers:
   - {fileID: 1016529174}
