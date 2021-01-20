@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class MenuTrigger : MonoBehaviour
 {
 
-    public XRController RightHand;
+    public XRController LeftHand;
     public InputHelpers.Button button = InputHelpers.Button.None;
     private bool MenuActive = true;
     public GameObject Menu;
@@ -27,7 +27,7 @@ public class MenuTrigger : MonoBehaviour
         if (!onCooldown)
         {
 
-            if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold))
+            if (LeftHand.inputDevice.IsPressed(button, out bool pressed, LeftHand.axisToPressThreshold))
             {
                 if (pressed)
                 {
