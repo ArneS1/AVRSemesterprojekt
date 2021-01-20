@@ -490,7 +490,7 @@ PrefabInstance:
     - target: {fileID: 7720172333724047193, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7720172333724047193, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}
@@ -737,7 +737,7 @@ Transform:
   m_Children:
   - {fileID: 1305588799}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &149746720
 PrefabInstance:
@@ -987,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1271,7 +1271,7 @@ PrefabInstance:
     - target: {fileID: 3967637994803065528, guid: f90f82410b6be254081df0edb8969a10,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3967637994803065528, guid: f90f82410b6be254081df0edb8969a10,
         type: 3}
@@ -1656,6 +1656,8 @@ MonoBehaviour:
   button: 3
   fishingNet: {fileID: 222329425}
   pliers: {fileID: 792697211}
+  pliersToFind: {fileID: 727037505}
+  fishingNetToFind: {fileID: 862474}
 --- !u!1 &509251806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5061784463913562075, guid: be973089460fb8143ba824f7b4db39ad,
@@ -1723,7 +1725,7 @@ PrefabInstance:
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
@@ -1943,7 +1945,7 @@ Transform:
   m_Children:
   - {fileID: 1941412278}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &718245529
 CharacterController:
@@ -2013,6 +2015,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XRRig: {fileID: 0}
+--- !u!1 &727037505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6999740201348601164, guid: be973089460fb8143ba824f7b4db39ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 5020326085347160673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &734360591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6057006705780082123, guid: 3ef61986de58f5a499903fa727449165,
@@ -2267,7 +2275,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822848521
 GameObject:
@@ -2377,6 +2385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656948683475319387, guid: f90f82410b6be254081df0edb8969a10,
+        type: 3}
+      propertyPath: m_TagString
+      value: FishingNet
       objectReference: {fileID: 0}
     - target: {fileID: 2324823304675397685, guid: f90f82410b6be254081df0edb8969a10,
         type: 3}
@@ -2750,7 +2763,7 @@ PrefabInstance:
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
@@ -2917,7 +2930,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940932234
 GameObject:
@@ -3512,7 +3525,7 @@ Transform:
   - {fileID: 990316315}
   - {fileID: 184513431}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259803554
 GameObject:
@@ -4006,7 +4019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4469,7 +4482,7 @@ PrefabInstance:
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
@@ -5702,7 +5715,7 @@ PrefabInstance:
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
@@ -5782,7 +5795,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1278973467096394156
 PrefabInstance:
@@ -6032,7 +6045,7 @@ PrefabInstance:
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3838307543493060680, guid: 6792d1f462814db4597394d9c74200fc,
         type: 3}
@@ -6450,7 +6463,7 @@ PrefabInstance:
     - target: {fileID: 7720172333724047193, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7720172333724047193, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}

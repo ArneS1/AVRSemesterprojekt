@@ -27,7 +27,7 @@ public class Scannable : XRSimpleInteractable
  protected override void OnHoverEntered(XRBaseInteractor interactor) {
         
         //kann auch sein das es interactor.name.Equals("Left Hand - Scannerlaser") sein müsste
-        if (interactor.Equals("Left Hand - Scannerlaser"))
+        if (interactor.name.Equals("Left Hand - Scannerlaser"))
         {
             infoHandler.setInfoText(infoText);
             infoHandler.enableInfoScreen();
