@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 0
-  controlID: 107
+  controlID: 138
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 108
+  controlID: 139
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 109
+  controlID: 140
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -393,10 +393,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 85}
-      m_SelectedIDs: 0ef9ffff
-      m_LastClickedID: 0
-      m_ExpandedIDs: 94e5ffff60fbffffae3a0000bc3a0000cc3a0000903b0000e83b0000
+      scrollPos: {x: 0, y: 456}
+      m_SelectedIDs: 4e3a0000
+      m_LastClickedID: 14926
+      m_ExpandedIDs: 92efffff60fbffffb23a0000c03a0000c63a0000d03a0000de3a0000e43a0000063b0000603b0000683b00009c3b0000a03b0000f63b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -456,9 +456,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 13.746685, y: -23.792088, z: 1.3625438}
+    m_Target: {x: 2.6440315, y: -37.153168, z: 39.155445}
     speed: 2
-    m_Value: {x: 13.746685, y: -23.792088, z: 1.3625438}
+    m_Value: {x: 2.6440315, y: -37.153168, z: 39.155445}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -504,13 +504,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.015632475, y: 0.98366106, z: -0.10546239, w: -0.1456768}
+    m_Target: {x: -0.17633358, y: 0.026883386, z: -0.0047199978, w: -0.9840526}
     speed: 2
-    m_Value: {x: -0.015631089, y: 0.9835738, z: -0.10545304, w: -0.14566389}
+    m_Value: {x: -0.17632301, y: 0.025404762, z: -0.0044550514, w: -0.9839945}
   m_Size:
-    m_Target: 1.107429
+    m_Target: 27.94071
     speed: 2
-    m_Value: 1.107429
+    m_Value: 26.737522
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -664,20 +664,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Store Assets/Hovl Studio/Procedural fire/Prefabs
+    - Assets/Tools/FishingNetz
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Store Assets/Hovl Studio/Procedural fire/Prefabs
+  - Assets/Tools/FishingNetz
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Unity\Projects\AVR Semesterprojekt
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 603f0000
-    m_LastClickedID: 16224
-    m_ExpandedIDs: 00000000f43e0000f63e0000f83e0000fa3e0000fc3e0000523f00005e3f00001c4d000000ca9a3b
+    scrollPos: {x: 0, y: 159}
+    m_SelectedIDs: 404a0000
+    m_LastClickedID: 19008
+    m_ExpandedIDs: 00000000323f0000343f0000363f0000383f00003a3f0000523f00005c3f00005e3f0000663f0000683f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -705,7 +705,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f43e0000f63e0000f83e0000fa3e0000fc3e0000
+    m_ExpandedIDs: 00000000323f0000343f0000363f0000383f00003a3f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
