@@ -24,10 +24,16 @@ public class Scannable : XRSimpleInteractable
         
     }
 
-    protected override void OnHoverEntered(XRBaseInteractor interactor) {
-        infoHandler.setInfoText(infoText);
-        infoHandler.enableInfoScreen();
-        GameStats.GetComponent<GameStats>().addNewFish(infoText);
+ protected override void OnHoverEntered(XRBaseInteractor interactor) {
+        
+        //kann auch sein das es interactor.name.Equals("Left Hand - Scannerlaser") sein müsste
+        if (interactor.Equals("Left Hand - Scannerlaser"))
+        {
+            infoHandler.setInfoText(infoText);
+            infoHandler.enableInfoScreen();
+            GameStats.GetComponent<GameStats>().addNewFish(infoText);
+        }
+
         
     }
 
