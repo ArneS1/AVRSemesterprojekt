@@ -26,11 +26,6 @@ public class ToolController : MonoBehaviour
     private bool isTouchingBackpack = false;
     private bool isTouchingToolbelt = false;
 
-    private bool fishingNetCollected = false;
-    private bool pliersCollected = false;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +44,7 @@ public class ToolController : MonoBehaviour
 
     private void checkIfToolbeltisGrabbed()
     {
-        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched) && pliersCollected)
+        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched))
         {
             if (pressed)
             {
@@ -74,7 +69,7 @@ public class ToolController : MonoBehaviour
 
     private void checkIfBackPackisGrabbed()
     {
-        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched) && fishingNetCollected)
+        if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !(toolSwitched))
         {
             if (pressed)
             {
@@ -117,7 +112,7 @@ public class ToolController : MonoBehaviour
             {
                 if (pressed)
                 {
-                    fishingNetCollected = true;
+                    fishingNetFound = true;
                     fishingNetEquipped = true;
                     fishingNet.SetActive(true);
                     other.gameObject.SetActive(false);
@@ -125,13 +120,13 @@ public class ToolController : MonoBehaviour
             }
         }
 
-        if (other.name == "PliersItem")
+        if (other.CompareTag("Pliers"))
         {
             if (RightHand.inputDevice.IsPressed(button, out bool pressed, RightHand.axisToPressThreshold) && !fishingNetEquipped)
             {
                 if (pressed)
                 {
-                    pliersCollected = true;
+                    pliersFound = true;
                     pliersEquipped = true;
                     pliers.SetActive(true);
                     other.gameObject.SetActive(false);
@@ -155,15 +150,5 @@ public class ToolController : MonoBehaviour
             toolSwitched = false;
 
         }
-    }
-
-    public void FindFishingNet(){
-        fishingNetFound = true;
-        fishingNetToFind.SetActive(false);
-    }
-
-    public void FindPliers(){
-        pliersFound = true;
-        pliersToFind.SetActive(false);
     }
 }
