@@ -12,6 +12,9 @@ TagManager:
   - Fire
   - FishingNet
   - Pliers
+  - Piler
+  - Plier
+  - Fish
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class FishTextScript : MonoBehaviour
 {
-    public GameObject game_stats;
     void Start()
     {
     }
@@ -13,6 +12,6 @@ public class FishTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = "Fische entdeckt: " + game_stats.GetComponent<GameStats>().different_fish_scanned;
+        GetComponent<Text>().text = "Fische entdeckt: " + Gamestate.Instance.getFishIndexCount();
     }
 }

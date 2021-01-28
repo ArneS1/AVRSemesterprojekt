@@ -79,7 +79,7 @@ MonoBehaviour:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
   infoText: 'Type: Ghost Fish'
-  highlightMaterial: {fileID: 0}
+  GameStats: {fileID: 0}
 --- !u!1 &7720172333765343868
 GameObject:
   m_ObjectHideFlags: 0

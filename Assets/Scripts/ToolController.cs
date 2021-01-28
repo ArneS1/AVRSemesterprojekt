@@ -13,11 +13,6 @@ public class ToolController : MonoBehaviour
     public GameObject fishingNet;
     public GameObject pliers;
 
-    public GameObject pliersToFind;
-    private bool pliersFound = false;
-    public GameObject fishingNetToFind;
-    private bool fishingNetFound = false;
-
     private bool fishingNetEquipped = false;
     private bool pliersEquipped = false;
 
@@ -49,7 +44,7 @@ public class ToolController : MonoBehaviour
             if (pressed)
             {
                 //Debug.Log("Button pressed");
-                if (isTouchingToolbelt && !(pliersEquipped) && !(fishingNetEquipped) && pliersFound)
+                if (isTouchingToolbelt && !(pliersEquipped) && !(fishingNetEquipped) && Gamestate.Instance.flag_pliersCollected)
                 {
                     pliers.SetActive(true);
                     pliersEquipped = true;
@@ -74,7 +69,7 @@ public class ToolController : MonoBehaviour
             if (pressed)
             {
                 //Debug.Log("Button pressed");
-                if (isTouchingBackpack && !(fishingNetEquipped) && !(pliersEquipped)  && fishingNetFound)
+                if (isTouchingBackpack && !(fishingNetEquipped) && !(pliersEquipped)  && Gamestate.Instance.flag_fishingNetCollected)
                 {
                     fishingNet.SetActive(true);
                     fishingNetEquipped = true;
@@ -112,7 +107,7 @@ public class ToolController : MonoBehaviour
             {
                 if (pressed)
                 {
-                    fishingNetFound = true;
+                    Gamestate.Instance.flag_fishingNetCollected = true;
                     fishingNetEquipped = true;
                     fishingNet.SetActive(true);
                     other.gameObject.SetActive(false);
@@ -126,7 +121,7 @@ public class ToolController : MonoBehaviour
             {
                 if (pressed)
                 {
-                    pliersFound = true;
+                    Gamestate.Instance.flag_pliersCollected = true;
                     pliersEquipped = true;
                     pliers.SetActive(true);
                     other.gameObject.SetActive(false);

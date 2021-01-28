@@ -447,7 +447,7 @@ PrefabInstance:
         type: 3}
       propertyPath: game_stats
       value: 
-      objectReference: {fileID: 2090201502}
+      objectReference: {fileID: 0}
     - target: {fileID: 7607835376791413198, guid: 3ef61986de58f5a499903fa727449165,
         type: 3}
       propertyPath: m_Name
@@ -462,7 +462,7 @@ PrefabInstance:
         type: 3}
       propertyPath: game_stats
       value: 
-      objectReference: {fileID: 2090201502}
+      objectReference: {fileID: 0}
     - target: {fileID: 8558366374459983202, guid: 3ef61986de58f5a499903fa727449165,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -2063,8 +2063,6 @@ MonoBehaviour:
   button: 3
   fishingNet: {fileID: 222329425}
   pliers: {fileID: 792697211}
-  pliersToFind: {fileID: 727037505}
-  fishingNetToFind: {fileID: 862474}
 --- !u!1 &509251806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5061784463913562075, guid: be973089460fb8143ba824f7b4db39ad,
@@ -2838,12 +2836,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Timeout: 10
   m_XRRig: {fileID: 0}
---- !u!1 &727037505 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6999740201348601164, guid: be973089460fb8143ba824f7b4db39ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 5020326085347160673}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &727037506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 235956232036522453, guid: be973089460fb8143ba824f7b4db39ad,
@@ -2950,9 +2942,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Metal Can'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1 &798797582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5643832269628359971, guid: f90f82410b6be254081df0edb8969a10,
@@ -3486,9 +3479,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Metal Can'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1 &886315564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,9 +3674,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Jellyfish'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1001 &919730330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3818,9 +3813,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Metal Can'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1 &925405026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,9 +4656,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Metal Can'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1 &1167693078
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,7 +4701,7 @@ Transform:
   - {fileID: 1013641702}
   - {fileID: 14622388}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1186265644
 GameObject:
@@ -6267,9 +6264,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
+  nameForFishIndex: 
   infoText: 'Type: Metal Can'
-  highlightMaterial: {fileID: 0}
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
+  ScanTimerMilliseconds: 0
 --- !u!1 &1910926941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6451,7 +6449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3746f8288757ea24e909633e4e9a85db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStats: {fileID: 2090201502}
+  GameStats: {fileID: 0}
 --- !u!136 &1924932637
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7048,6 +7046,84 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988713111}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1998804534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1998804536}
+  - component: {fileID: 1998804535}
+  - component: {fileID: 1998804538}
+  - component: {fileID: 1998804537}
+  m_Layer: 0
+  m_Name: GameLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1998804535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998804534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6dd5f794f666b408b97144ae15a338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag_scannerCollected: 0
+  flag_pliersCollected: 0
+  flag_fishingNetCollected: 0
+  SCAN_DURATION_IN_MS: 3000
+--- !u!4 &1998804536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998804534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.268917, y: -7.82831, z: -3.374918}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1998804537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998804534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5ea7d58e3828c4b83e2ad417b76555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trash_collected: 0
+  different_fish_scanned: 0
+  newFish: {fileID: 892417582}
+--- !u!114 &1998804538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998804534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25d6fb1351119945b3189ad479603f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newFish:
+  - {fileID: 892417582}
 --- !u!1 &2000586661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7256,53 +7332,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee9773018f91ad24fb0ee058b8b25a82, type: 3}
---- !u!1 &2090201502
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2090201504}
-  - component: {fileID: 2090201503}
-  m_Layer: 0
-  m_Name: GameStats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2090201503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090201502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5ea7d58e3828c4b83e2ad417b76555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trash_collected: 0
-  different_fish_scanned: 0
-  fishes_scanned: []
-  newFish: {fileID: 892417582}
---- !u!4 &2090201504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090201502}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12836719, y: -19.527079, z: 4.966634}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2125973521
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7922,7 +7951,7 @@ PrefabInstance:
     - target: {fileID: 3689604647379293628, guid: be973089460fb8143ba824f7b4db39ad,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3689604647379293628, guid: be973089460fb8143ba824f7b4db39ad,
         type: 3}
@@ -8142,11 +8171,16 @@ PrefabInstance:
         type: 3}
       propertyPath: GameStats
       value: 
-      objectReference: {fileID: 2090201502}
+      objectReference: {fileID: 0}
     - target: {fileID: 7720172333724047195, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}
       propertyPath: m_Name
       value: Ghost Fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 7720172333724047195, guid: f1b76b2ad2cf58446a6debc71674abdb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fish
       objectReference: {fileID: 0}
     - target: {fileID: 7720172333765343867, guid: f1b76b2ad2cf58446a6debc71674abdb,
         type: 3}

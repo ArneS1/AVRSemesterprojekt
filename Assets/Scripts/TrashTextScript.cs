@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class TrashTextScript : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public GameObject game_stats;
     void Start()
     {
     }
@@ -15,6 +13,6 @@ public class TrashTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = "Müll gesammelt: " + game_stats.GetComponent<GameStats>().trash_collected;
+        GetComponent<Text>().text = "Müll gesammelt: " + Gamestate.Instance.TrashCollected;
     }
 }
