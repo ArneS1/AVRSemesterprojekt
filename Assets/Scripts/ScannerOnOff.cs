@@ -5,25 +5,31 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ScannerOnOff : MonoBehaviour
 {
-    public GameObject scanner;
+    public GameObject ScannerLaser;
+    public GameObject ScannerToCollect;
+    public GameObject ScannerLight;
     public XRController LeftHand;
-    public InputHelpers.Button button = InputHelpers.Button.None;
+
+    public GameObject ScannerTool;
+    public InputHelpers.Button TriggerButton = InputHelpers.Button.None;
+    public InputHelpers.Button GrabButton = InputHelpers.Button.None;
 
     private bool previousPress = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ScannerTool.SetActive(Gamestate.Instance.flag_scannerCollected);
+        ScannerLight.SetActive(Gamestate.Instance.flag_scannerCollected);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(LeftHand.inputDevice.IsPressed(button, out bool pressed, LeftHand.axisToPressThreshold)){
+        if(LeftHand.inputDevice.IsPressed(TriggerButton, out bool pressed, LeftHand.axisToPressThreshold)){
             if(previousPress != pressed){
                 previousPress = pressed;
 
-                if(pressed){
+                if(pressed && Gamestate.Instance.flag_scannerCollected){
                     ScannerOn();
                 } else {
                     ScannerOff();
@@ -34,10 +40,17 @@ public class ScannerOnOff : MonoBehaviour
     }
 
     public void ScannerOn(){
-        scanner.SetActive(true);
+        ScannerLaser.SetActive(true);
     }
 
     public void ScannerOff(){
-        scanner.SetActive(false);
+        ScannerLaser.SetActive(false);
+    }
+
+    public void ShowScannerTool(){
+        ScannerToCollect.SetActive(false);
+        ScannerTool.SetActive(true);
+        ScannerLight.SetActive(true);
+        Gamestate.Instance.flag_scannerCollected = true;
     }
 }

@@ -15,6 +15,7 @@ TagManager:
   - Piler
   - Plier
   - Fish
+  - Scanner
   layers:
   - Default
   - TransparentFX

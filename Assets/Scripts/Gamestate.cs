@@ -11,8 +11,8 @@ public sealed class Gamestate : MonoBehaviour
     // Flags
     public bool flag_scannerCollected;
     public bool flag_pliersCollected;
-    public bool flag_fishingNetCollected; 
-
+    public bool flag_fishingNetCollected;
+        
     // General Data
     public int SCAN_DURATION_IN_SECONDS = 3;
 
