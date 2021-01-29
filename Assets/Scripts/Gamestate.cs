@@ -50,7 +50,7 @@ public sealed class Gamestate : MonoBehaviour
         }
     }
 
-    //Progress List Getter / Setter
+    // Progress List Getter / Setter
     public void addFishToIndex(string name){
         if(!FishIndex.Contains(name)){
             FishIndex.Add(name);
@@ -60,8 +60,8 @@ public sealed class Gamestate : MonoBehaviour
         return FishIndex;
     }
 
-    public int getFishIndexCount(){
-        return FishIndex.Count;
+    public int getFishIndexCapacity(){
+        return FishIndex.Capacity;
     }
 
     public void addTrashToIndex(string name){
@@ -73,7 +73,7 @@ public sealed class Gamestate : MonoBehaviour
         return TrashIndex;
     }
 
-    public int getTrashIndexCount(){
-        return TrashIndex.Count;
+    public int getTrashIndexCapacity(){
+        return TrashIndex.Capacity;
     }
 }

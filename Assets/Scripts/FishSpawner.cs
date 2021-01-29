@@ -10,6 +10,8 @@ public sealed class FishSpawner : MonoBehaviour
 
     public List<GameObject> newFish;
 
+    public GameObject turtle;
+
     FishSpawner(){
         Debug.Log("FishSpawner created");
     }
@@ -47,5 +49,10 @@ public sealed class FishSpawner : MonoBehaviour
         } else {
             Debug.Log("no new Fish to Spawn");
         }
+    }
+
+    public void SpawnTurtle(Vector3 position){
+        turtle.transform.position = position;
+        turtle.SetActive(true);
     }
 }

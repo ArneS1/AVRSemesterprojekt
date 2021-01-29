@@ -12,6 +12,6 @@ public class FishTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Text>().text = "Fische entdeckt: " + Gamestate.Instance.getFishIndexCount();
+        GetComponent<Text>().text = "Fische entdeckt: " + Gamestate.Instance.getFishIndexCapacity();
     }
 }
