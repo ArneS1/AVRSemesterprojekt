@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class MissionTableScript : MonoBehaviour
 {
     public Text MissionTableText;
-    private string ScannerExplanation;
+    public string ScannerExplanation;
     
     // Start is called before the first frame update
     void Start()
     {
-        ScannerExplanation = "Von nun an hast du diesen Scanner immer in der Hand. Benutze ihn mit der Trigger-Taste am linken Controller! Scanne zum Testen dieses Tablet 3 Sekunden lang.";
     }
 
     // Update is called once per frame
@@ -23,7 +22,11 @@ public class MissionTableScript : MonoBehaviour
     private void checkFlags(){
 
         if(Gamestate.Instance.flag_scannerCollected){
-            MissionTableText.text = ScannerExplanation;
+            MissionTableText.text = ScannerExplanation.Replace("<br>", "\n");
+            MissionTableText.lineSpacing = 1;
+            MissionTableText.fontSize = 14;
+            MissionTableText.supportRichText = true;
+            MissionTableText.alignment = TextAnchor.UpperCenter;
         }
     }
 

@@ -23,7 +23,11 @@ public class InfoHandler : MonoBehaviour
     public void setInfoText(string info){
         Debug.Log("INFO RECEIVED");
         infoText = info;
-        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().text = infoText;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().text = infoText.Replace("<br>", "\n");
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().lineSpacing = 1;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().fontSize = 14;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().supportRichText = true;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().alignment = TextAnchor.UpperCenter;
     }
 
     public void enableInfoScreen(){

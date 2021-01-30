@@ -7,7 +7,7 @@ public class Scannable : XRSimpleInteractable
 {
     public string nameForIndex;
     public string infoText;
-    private InfoHandler infoHandler;
+    public InfoHandler infoHandler;
     //ScanState must include done state so it doesnt instantly restart.
     private int ScanState = 0; // 0 - not scanned; 1 - scanning; 2 - done;
     private float ScanEndTimeInMilliseconds;

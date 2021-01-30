@@ -2494,6 +2494,21 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3878544052434989641, guid: 3ef61986de58f5a499903fa727449165,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878544052434989641, guid: 3ef61986de58f5a499903fa727449165,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878544052434989641, guid: 3ef61986de58f5a499903fa727449165,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4579756684966540144, guid: 3ef61986de58f5a499903fa727449165,
         type: 3}
       propertyPath: m_Color.a
@@ -2605,6 +2620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Scanner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607835376791413198, guid: 3ef61986de58f5a499903fa727449165,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7856627622774938508, guid: 3ef61986de58f5a499903fa727449165,
         type: 3}
@@ -2911,7 +2931,7 @@ GameObject:
   - component: {fileID: 1233221228}
   - component: {fileID: 1233221227}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: FakeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5380,7 +5400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2010079624
 Transform:
   m_ObjectHideFlags: 0
@@ -6329,6 +6349,7 @@ MonoBehaviour:
   nameForIndex: Atlantischer Hering
   infoText: 'Atlantischer Hering \n Familie: Heringe \n Ordnung: Heringsartige \n
     Teilklasse: Echte Knochenfische'
+  infoHandler: {fileID: 1753706487}
   ScanTimeInSeconds: 0
 --- !u!33 &4304626415412271998
 MeshFilter:
@@ -6535,6 +6556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionTableText: {fileID: 6591304314209522086}
+  ScannerExplanation: Von nun an hast du diesen Scanner immer in der Hand.<br>Benutze
+    ihn mit der Trigger-Taste am linken Controller!<br><br>Scanne zum Testen dieses
+    Tablet 3 Sekunden lang.
 --- !u!4 &4928275374023596959
 Transform:
   m_ObjectHideFlags: 0
@@ -6721,7 +6745,9 @@ MonoBehaviour:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
   nameForIndex: none
-  infoText: Gut Gemacht! Hier wirst du Informationen zu den gescannten Fischen finden.
+  infoText: Gut Gemacht!<br>Hier wirst du Informationen zu den gescannten Fischen
+    finden.
+  infoHandler: {fileID: 1753706487}
   ScanTimeInSeconds: 3
 --- !u!1 &7173843902964244012
 GameObject:
