@@ -2819,7 +2819,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
   speed: 5
-  gravity: 0
+  sideSpeedMultiplier: 0.5
+  gravityBelowSeaLevel: 0
+  gravityAboveSeaLevel: 30
   controllers:
   - {fileID: 1016529174}
 --- !u!114 &718245532
@@ -2942,10 +2944,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Metal Can'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1 &798797582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5643832269628359971, guid: f90f82410b6be254081df0edb8969a10,
@@ -3479,10 +3481,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Metal Can'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1 &886315564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,10 +3676,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Jellyfish'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1001 &919730330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3813,10 +3815,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Metal Can'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1 &925405026
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,9 +4406,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5d1d66919bc9e4dab21335764fdb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanner: {fileID: 1939911505}
+  ScannerLaser: {fileID: 0}
+  ScannerToCollect: {fileID: 0}
+  ScannerLight: {fileID: 0}
   LeftHand: {fileID: 1016529174}
-  button: 2
+  ScannerTool: {fileID: 0}
+  TriggerButton: 0
+  GrabButton: 0
 --- !u!54 &1016529176
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4656,10 +4662,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Metal Can'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1 &1167693078
 GameObject:
   m_ObjectHideFlags: 0
@@ -6264,10 +6270,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_CustomReticle: {fileID: 0}
-  nameForFishIndex: 
+  nameForIndex: 
   infoText: 'Type: Metal Can'
-  GameStats: {fileID: 0}
-  ScanTimerMilliseconds: 0
+  infoHandler: {fileID: 0}
+  ScanTimeInSeconds: 0
 --- !u!1 &1910926941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6449,7 +6455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3746f8288757ea24e909633e4e9a85db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStats: {fileID: 0}
 --- !u!136 &1924932637
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7080,7 +7085,8 @@ MonoBehaviour:
   flag_scannerCollected: 0
   flag_pliersCollected: 0
   flag_fishingNetCollected: 0
-  SCAN_DURATION_IN_MS: 3000
+  SCAN_DURATION_IN_SECONDS: 3
+  TrashCollected: 0
 --- !u!4 &1998804536
 Transform:
   m_ObjectHideFlags: 0
@@ -7107,9 +7113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5ea7d58e3828c4b83e2ad417b76555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trash_collected: 0
-  different_fish_scanned: 0
-  newFish: {fileID: 892417582}
 --- !u!114 &1998804538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7124,6 +7127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newFish:
   - {fileID: 892417582}
+  turtle: {fileID: 0}
 --- !u!1 &2000586661
 GameObject:
   m_ObjectHideFlags: 0

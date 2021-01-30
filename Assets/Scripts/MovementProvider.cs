@@ -7,7 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class MovementProvider : LocomotionProvider
 {
     public float speed;
-    public float gravity;
+    public float sideSpeedMultiplier;
+    public float gravityBelowSeaLevel;
+    public float gravityAboveSeaLevel;
     public List<XRController> controllers = null;
     private CharacterController characterController = null;
     private GameObject head = null;
@@ -70,23 +72,45 @@ public class MovementProvider : LocomotionProvider
 
     private void StartMove(Vector2 position)
     {
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+        
+        if(Camera.main.transform.position.y < 0.5)
+        {
+            // below sea level
+            Vector3 forward = Camera.main.transform.forward;
+            Vector3 right = Camera.main.transform.right;
 
-        forward *= position.y;
-        right *= position.x;
+            forward *= position.y;
+            right *= position.x * sideSpeedMultiplier;
 
-        Vector3 movement = (forward + right) * speed;
+            Vector3 movement = (forward + right) * speed;
 
-        if(Camera.main.transform.position.y > 0.5 && movement.y > 0){
-            movement.y = 0;
+            characterController.Move(movement * Time.deltaTime);
+        } else 
+        {
+            // Apply the touch position to the head's forward Vector
+            Vector3 direction = new Vector3(position.x, 0, position.y);
+            Vector3 headRotation = new Vector3(0, head.transform.eulerAngles.y, 0);
+
+            // Rotate the input direction by the horizontal head rotation
+            direction = Quaternion.Euler(headRotation) * direction;
+
+            // Apply speed and move
+            Vector3 movement = direction * speed;
+            characterController.Move(movement * Time.deltaTime);
         }
-
-        characterController.Move(movement * Time.deltaTime);
     }
 
     private void ApplyGravity(){
-        Vector3 gravityVector = new Vector3(0, Physics.gravity.y * gravity, 0);
+
+        Vector3 gravityVector;
+
+        if(Camera.main.transform.position.y < 0.5)
+        {
+            gravityVector = new Vector3(0, Physics.gravity.y * gravityBelowSeaLevel, 0);
+        } else {
+            gravityVector = new Vector3(0, Physics.gravity.y * gravityAboveSeaLevel, 0);
+        }
+        
         gravityVector.y *= Time.deltaTime;
 
         characterController.Move(gravityVector * Time.deltaTime);

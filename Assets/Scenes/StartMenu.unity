@@ -1255,7 +1255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_System: {fileID: 0}
   speed: 5
-  gravity: 0
+  sideSpeedMultiplier: 0.5
+  gravityBelowSeaLevel: 0
+  gravityAboveSeaLevel: 30
   controllers:
   - {fileID: 55266096}
 --- !u!143 &383535267
@@ -2686,6 +2688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MissionTableText: {fileID: 259264230}
+  ScannerExplanation: 
 --- !u!1001 &1310638899
 PrefabInstance:
   m_ObjectHideFlags: 0
