@@ -7,14 +7,13 @@ public class FogController : MonoBehaviour
 {
     // Start is called before the first frame update
     private float fog_intensity;
-    private Color color;
     public GameObject player;
     public GameObject water_surface;
+    public GameObject Light;
 
     private float stand_fog_dens = 0.006f;
 
     private bool fogActive = false;
-
 
     void Start()
     {
@@ -42,9 +41,9 @@ public class FogController : MonoBehaviour
     private float calculateDensity(float playerY, float waterY)
     {
         int divider = -40000;
-
         float distance = (waterY - playerY);
         float fog_dens = distance / divider;
+
         return Math.Abs(fog_dens);
 
         //TODO: Farbe vom Fog ändern oder light intensity runter drehen?
@@ -54,12 +53,15 @@ public class FogController : MonoBehaviour
     {
         fogActive = true;
         RenderSettings.fog = true;
+        Light.GetComponent<Light>().intensity = 0;
     }
 
     public void deactivateFog()
     {
         fogActive = false;
         RenderSettings.fog = false;
+        Light.GetComponent<Light>().intensity = 1;
+
     }
 
 }
