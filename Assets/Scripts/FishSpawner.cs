@@ -10,6 +10,9 @@ public sealed class FishSpawner : MonoBehaviour
 
     public List<GameObject> newFish;
 
+    public GameObject VulkanCrabs;
+    public GameObject VulkanShells;
+
     public GameObject turtle;
 
     FishSpawner(){
@@ -54,5 +57,13 @@ public sealed class FishSpawner : MonoBehaviour
     public void SpawnTurtle(Vector3 position){
         turtle.transform.position = position;
         turtle.SetActive(true);
+    }
+
+    public void SpawnVulkanCrabs(){
+        VulkanCrabs.SetActive(true);
+    }
+
+    public void SpawnVulkanShells(){
+        VulkanShells.SetActive(true);
     }
 }

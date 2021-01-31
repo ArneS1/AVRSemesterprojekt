@@ -19,7 +19,13 @@ public class TrashCollector : MonoBehaviour
     //When Trash enters the Trashbin
     private void OnTriggerEnter(Collider other){
 
-        if(other.gameObject.CompareTag("Trash")){
+        if(other.gameObject.tag.StartsWith("Trash")){
+
+            if(other.gameObject.CompareTag("VulkanTrash")){
+
+                Gamestate.Instance.VulkanTrashCollected += 1;
+                
+            }
 
             other.gameObject.SetActive(false);
             Debug.Log("Trash Collected.");

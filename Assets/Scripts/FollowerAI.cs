@@ -6,7 +6,6 @@ public class FollowerAI : MonoBehaviour
 {
     private GameObject target;
     public float  strength = .5f;
-    public float speed;
     public List<GameObject> targets = new List<GameObject>();
     public GameObject DialogTarget;
     private bool isDialog;
@@ -36,16 +35,19 @@ public class FollowerAI : MonoBehaviour
 
     private void Move()
     {
-        Vector3 goalVector = target.transform.position - transform.position;
-        if (goalVector != Vector3.zero)
+        if(target.transform.position.y < -1 )
         {
-            Quaternion targetRotation = Quaternion.LookRotation(goalVector);
-            float str = Mathf.Min(strength * Time.deltaTime, 1);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+            Vector3 goalVector = target.transform.position - transform.position;
+            if (goalVector != Vector3.zero)
+            {
+                    Quaternion targetRotation = Quaternion.LookRotation(goalVector);
+                float str = Mathf.Min(strength * Time.deltaTime, 1);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
 
+            }
+
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.01f);
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.01f);
     }
 
     private void ChooseNewTarget()

@@ -21,6 +21,7 @@ public sealed class Gamestate : MonoBehaviour
 
     private List<string> TrashIndex = new List<string>();
     public int TrashCollected;
+    public int VulkanTrashCollected;
 
     Gamestate(){
         Debug.Log("Gamestate created");

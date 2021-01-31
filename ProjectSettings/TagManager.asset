@@ -16,6 +16,7 @@ TagManager:
   - Plier
   - Fish
   - Scanner
+  - TrashVulkan
   layers:
   - Default
   - TransparentFX

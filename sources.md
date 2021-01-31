@@ -19,3 +19,13 @@ cola_can - Cola Can - Cola Can - YGS Assets
 fishing_boat - fishing_boat - Fishing Boat - ozgur
 
 net (Material) - fishing_boat - Fishing Boat - ozgur
+
+Tire - Lowpoly_Wasteland_Props - Lowpoly Wasteland Props - Evgenia
+
+Radio - Lowpoly_Wasteland_Props - Lowpoly Wasteland Props - Evgenia
+
+StopSign - Lowpoly_Wasteland_Props - Lowpoly Wasteland Props - Evgenia
+
+Yeti Crab - Animalpackdeluxev1 - https://unitygamedeveloper.com/unity-assets/animal-pack-deluxe-detail - incern
+
+Vulkan Smoke - EffectTexturesAndPrefabs - Effect textures and prefabs - Magicpot Inc.
