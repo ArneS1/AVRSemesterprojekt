@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0, g: 0.16736965, b: 0.5471698, a: 1}
-  m_FogMode: 2
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 394.6
+  m_FogColor: {r: 0.4009434, g: 0.98880273, b: 1, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.008
+  m_LinearFogStart: 15.03
+  m_LinearFogEnd: 37.36
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -27,9 +27,9 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: 0.356
+  m_HaloStrength: 0
   m_FlareStrength: 0.105
-  m_FlareFadeSpeed: 3
+  m_FlareFadeSpeed: 0.09
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
@@ -2297,7 +2297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886344279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.76, y: 1, z: 0}
+  m_LocalPosition: {x: 6.76, y: 1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 793709971}
@@ -2442,6 +2442,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.3973727, y: 11.885108, z: 2.3866346}
   m_Center: {x: 1.8056049, y: -0.25566688, z: 5.1037254}
+--- !u!1 &929820937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 138394, guid: af2652a630f9e464895d954b8ce854bd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1332435582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &949505138
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,6 +3117,7 @@ GameObject:
   - component: {fileID: 1209087692}
   - component: {fileID: 1209087693}
   - component: {fileID: 1209087694}
+  - component: {fileID: 1209087695}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -3175,6 +3182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbd96b9299115b41ac6e73555a7a85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1209087695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209087690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90c2737587d05a4e891f3b0f8bf0645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 425216231}
+  water_surface: {fileID: 929820937}
 --- !u!1 &1232204578
 GameObject:
   m_ObjectHideFlags: 0
