@@ -37,7 +37,7 @@ public class MovementProvider : LocomotionProvider
     private void PositionController()
     {
         //get the head height
-        float headHeight = Mathf.Clamp(head.transform.localPosition.y,1,2);
+        float headHeight = Mathf.Clamp(head.transform.localPosition.y, 1 , 3);
         characterController.height = headHeight;
 
         //cut in half, add skin

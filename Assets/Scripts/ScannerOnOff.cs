@@ -7,7 +7,6 @@ public class ScannerOnOff : MonoBehaviour
 {
     public GameObject ScannerLaser;
     public GameObject ScannerToCollect;
-    public GameObject ScannerLight;
     public XRController LeftHand;
 
     public GameObject ScannerTool;
@@ -19,7 +18,6 @@ public class ScannerOnOff : MonoBehaviour
     void Start()
     {
         ScannerTool.SetActive(Gamestate.Instance.flag_scannerCollected);
-        ScannerLight.SetActive(Gamestate.Instance.flag_scannerCollected);
     }
 
     // Update is called once per frame
@@ -50,7 +48,6 @@ public class ScannerOnOff : MonoBehaviour
     public void ShowScannerTool(){
         ScannerToCollect.SetActive(false);
         ScannerTool.SetActive(true);
-        ScannerLight.SetActive(true);
         Gamestate.Instance.flag_scannerCollected = true;
     }
 }

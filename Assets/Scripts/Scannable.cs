@@ -7,7 +7,7 @@ public class Scannable : XRSimpleInteractable
 {
     public string nameForIndex;
     public string infoText;
-    public InfoHandler infoHandler;
+
     //ScanState must include done state so it doesnt instantly restart.
     private int ScanState = 0; // 0 - not scanned; 1 - scanning; 2 - done;
     private float ScanEndTimeInMilliseconds;
@@ -16,10 +16,6 @@ public class Scannable : XRSimpleInteractable
     // Start is called before the first frame update
     void Start()
     {
-        if(infoHandler == null){
-            infoHandler = GameObject.Find("Scanner").GetComponentInChildren<InfoHandler>();
-        }
-
         if(ScanTimeInSeconds == 0){
             ScanTimeInSeconds = Gamestate.Instance.SCAN_DURATION_IN_SECONDS;
         }
@@ -29,7 +25,6 @@ public class Scannable : XRSimpleInteractable
     void Update()
     {
         if(ScanState == 1){
-            Debug.Log("Scanning for: " + (Time.time - ScanEndTimeInMilliseconds));
             if(Time.time >= ScanEndTimeInMilliseconds){
                 ScanFinished();
             }
@@ -55,13 +50,14 @@ public class Scannable : XRSimpleInteractable
         Debug.Log("Scan started");
         ScanState = 1;
         ScanEndTimeInMilliseconds = Time.time + ScanTimeInSeconds;
+        InfoHandler.Instance.StartScan(ScanTimeInSeconds);
 
     }
 
     private void AbortScan()
     {
         ScanState = 0;
-        infoHandler.disableInfoScreen();
+        InfoHandler.Instance.AbortScan();
     }
 
     private void ScanFinished()
@@ -69,8 +65,7 @@ public class Scannable : XRSimpleInteractable
         ScanState = 2;
 
         //info for Scanner/UI
-        infoHandler.setInfoText(infoText);
-        infoHandler.enableInfoScreen();
+        InfoHandler.Instance.setInfoText(infoText);
 
         //info for Gamestate
         if(this.gameObject.CompareTag("Fish")){
