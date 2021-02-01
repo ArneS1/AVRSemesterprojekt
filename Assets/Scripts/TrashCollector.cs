@@ -21,7 +21,7 @@ public class TrashCollector : MonoBehaviour
 
         if(other.gameObject.tag.StartsWith("Trash")){
 
-            if(other.gameObject.CompareTag("VulkanTrash")){
+            if(other.gameObject.CompareTag("TrashVulkan")){
 
                 Gamestate.Instance.VulkanTrashCollected += 1;
                 

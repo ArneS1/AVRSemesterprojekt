@@ -40,13 +40,23 @@ public class FollowerAI : MonoBehaviour
             Vector3 goalVector = target.transform.position - transform.position;
             if (goalVector != Vector3.zero)
             {
-                    Quaternion targetRotation = Quaternion.LookRotation(goalVector);
+                Quaternion targetRotation = Quaternion.LookRotation(-goalVector);
+                float str = Mathf.Min(strength * Time.deltaTime, 1);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+
+
+            } else
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(goalVector);
                 float str = Mathf.Min(strength * Time.deltaTime, 1);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
 
             }
 
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.01f);
+
+
+
         }
     }
 
