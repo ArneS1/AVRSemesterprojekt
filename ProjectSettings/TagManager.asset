@@ -17,6 +17,7 @@ TagManager:
   - Fish
   - Scanner
   - TrashVulkan
+  - Tablet
   layers:
   - Default
   - TransparentFX

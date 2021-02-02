@@ -7,6 +7,7 @@ public class EventMaker : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject VulkanSmoke;
+    private bool menuInitialized;
     void Start()
     {
         
@@ -15,8 +16,16 @@ public class EventMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckFish();
         CheckTrash();
         CheckVulkan();
+    }
+
+    private void CheckFish(){
+        if(Gamestate.Instance.flag_firstFishScanned && !menuInitialized){
+            menuInitialized = true;
+            UpdateTabletText("Aktiver Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.");
+        }
     }
 
     private void CheckTrash()
@@ -37,5 +46,9 @@ public class EventMaker : MonoBehaviour
             FishSpawner.Instance.SpawnVulkanCrabs();
             VulkanSmoke.SetActive(true);
         }
+    }
+
+    public void UpdateTabletText(string newText){
+        FindObjectOfType<MissionTableScript>().UpdateText(newText);
     }
 }

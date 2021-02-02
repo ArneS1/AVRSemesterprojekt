@@ -8,10 +8,15 @@ public sealed class Gamestate : MonoBehaviour
     private static Gamestate instance = null;
     private static readonly object padlock = new object();
 
+    // Data to Set
+    public int NumberOfFishToScan;
+
     // Flags
     public bool flag_scannerCollected;
     public bool flag_pliersCollected;
     public bool flag_fishingNetCollected;
+    public bool flag_firstFishScanned;
+    public bool flag_firstTabletScanned;
         
     // General Data
     public int SCAN_DURATION_IN_SECONDS = 3;
@@ -22,6 +27,8 @@ public sealed class Gamestate : MonoBehaviour
     private List<string> TrashIndex = new List<string>();
     public int TrashCollected;
     public int VulkanTrashCollected;
+
+
 
     Gamestate(){
         Debug.Log("Gamestate created");
@@ -55,6 +62,7 @@ public sealed class Gamestate : MonoBehaviour
     public void addFishToIndex(string name){
         if(!FishIndex.Contains(name)){
             FishIndex.Add(name);
+            flag_firstFishScanned = true;
         }
     }
     public List<string> getFishIndex(){
@@ -62,7 +70,12 @@ public sealed class Gamestate : MonoBehaviour
     }
 
     public int getFishIndexCapacity(){
-        return FishIndex.Capacity;
+        int counter = 0;
+        foreach (var item in FishIndex)
+        {
+            counter++;
+        }
+        return counter;
     }
 
     public void addTrashToIndex(string name){

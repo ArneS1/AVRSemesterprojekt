@@ -29,10 +29,10 @@ public class ScannerOnOff : MonoBehaviour
 
                 if(pressed && Gamestate.Instance.flag_scannerCollected){
                     ScannerOn();
+                    InfoHandler.Instance.ResetInfoText();
                 } else {
                     ScannerOff();
                 }
-
             }
         }
     }

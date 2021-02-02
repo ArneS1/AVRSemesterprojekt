@@ -1467,6 +1467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6057006705780082123}
+  - component: {fileID: 799766479137506715}
   m_Layer: 0
   m_Name: Scanner
   m_TagString: Untagged
@@ -1496,6 +1497,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &799766479137506715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607835376791413198}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22683144, y: 0.25, z: 1}
+  m_Center: {x: 0.32, y: -0.44, z: 0}
 --- !u!1 &7902651059044435398
 GameObject:
   m_ObjectHideFlags: 0

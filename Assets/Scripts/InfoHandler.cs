@@ -18,6 +18,7 @@ public sealed class InfoHandler : MonoBehaviour
     public Material ProgressRed;
     public Material ProgressGreen;
     private bool isScanning;
+    public bool infoReceived;
     private float ScanEndTime;
     private float ScanStartTime;
     private float ScanTimePartial; // 1/7 der scanzeit -> 6 lampen + alle grün
@@ -63,9 +64,9 @@ public sealed class InfoHandler : MonoBehaviour
         infoText = info;
         infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().text = infoText.Replace("<br>", "\n");
         infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().lineSpacing = 1;
-        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().fontSize = 36;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().fontSize = 40;
         infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().supportRichText = true;
-        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().alignment = TextAnchor.UpperCenter;
+        infoScreen.GetComponentInChildren<Canvas>().GetComponentInChildren<Text>().alignment = TextAnchor.MiddleCenter;
     }
 
     public void StartScan(int ScanTimeInSeconds){
@@ -73,47 +74,36 @@ public sealed class InfoHandler : MonoBehaviour
         ScanStartTime = Time.time;
         ScanEndTime = ScanStartTime + ScanTimeInSeconds;
         ScanTimePartial = ScanTimeInSeconds / 7.0f;
-
-        Debug.Log("Scan Time in Seconds Time: " + ScanTimeInSeconds);
-        Debug.Log("berechnung: " + ScanTimeInSeconds + " / 7 = " + (ScanTimeInSeconds / 7.0f));
-        Debug.Log("Partial Time: " + ScanTimePartial);
     }
 
     public void UpdateScanProgress(){
-        //Debug.Log("Scan End Time: " + ScanEndTimeInMilliseconds);
-        //Debug.Log("Time: " + Time.time);
 
         float RemainingScanTime = ScanEndTime - Time.time;
-        //Debug.Log("Time remaining: " + RemainingScanTime);
-
         int partials = Mathf.FloorToInt(RemainingScanTime / ScanTimePartial);
-
-        Debug.Log("Scan Progress Partial: " + partials);
 
         switch(partials)
         {
-            case 0:
-                ColorAllProgressLamps(ProgressGreen);
-                EndScan();
-                break;
-            case 6:
+            case 5:
                 ProgressLights[0].GetComponent<Renderer>().material = ProgressRed;
                 break;
-            case 5:
+            case 4:
                 ProgressLights[1].GetComponent<Renderer>().material = ProgressRed;
                 break;
-            case 4:
+            case 3:
                 ProgressLights[2].GetComponent<Renderer>().material = ProgressRed;
                 break;
-            case 3:
+            case 2:
                 ProgressLights[3].GetComponent<Renderer>().material = ProgressRed;
                 break;
-            case 2:
+            case 1:
                 ProgressLights[4].GetComponent<Renderer>().material = ProgressRed;
                 break;
-            case 1:
+            case 0:
                 ProgressLights[5].GetComponent<Renderer>().material = ProgressRed;
-                break;   
+                break;
+            case -1:
+                EndScan();
+            break;   
         }
 
     }
@@ -128,6 +118,7 @@ public sealed class InfoHandler : MonoBehaviour
 
     private void EndScan()
     {
+        infoReceived = true;
         ColorAllProgressLamps(ProgressGreen);
     }
 
@@ -136,6 +127,10 @@ public sealed class InfoHandler : MonoBehaviour
         isScanning = false;
         //TODO: rot blinken
         ColorAllProgressLamps(ProgressOff);
+    }
+
+    public void ResetInfoText(){
+        setInfoText("Nothing Scanned");
     }
 
 }
