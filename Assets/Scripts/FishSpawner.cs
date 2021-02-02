@@ -15,6 +15,8 @@ public sealed class FishSpawner : MonoBehaviour
 
     public GameObject turtle;
 
+    public GameObject level_one;
+
     FishSpawner(){
         Debug.Log("FishSpawner created");
     }
@@ -54,9 +56,10 @@ public sealed class FishSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnTurtle(Vector3 position){
+    public GameObject SpawnTurtle(Vector3 position){
         turtle.transform.position = position;
         turtle.SetActive(true);
+        return turtle;
     }
 
     public void SpawnVulkanCrabs(){
@@ -65,5 +68,13 @@ public sealed class FishSpawner : MonoBehaviour
 
     public void SpawnVulkanShells(){
         VulkanShells.SetActive(true);
+    }
+
+    public void spawnFishes(GameObject fish, int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            Instantiate(fish, fish.GetComponent<UnderwaterAI>().chooseNewTarget(fish.GetComponent<UnderwaterAI>().chooseUnderwaterLevel()), Quaternion.identity);
+        }
     }
 }

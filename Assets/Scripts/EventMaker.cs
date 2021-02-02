@@ -8,9 +8,17 @@ public class EventMaker : MonoBehaviour
 
     public GameObject VulkanSmoke;
     private bool menuInitialized;
+    private bool turtleSpawned;
+
+    public GameObject standard_fish;
+    public GameObject shark;
+
+    private GameObject turtle;
+
     void Start()
     {
-        
+        FishSpawner.Instance.spawnFishes(standard_fish, 100);
+        FishSpawner.Instance.spawnFishes(shark, 5);
     }
 
     // Update is called once per frame
@@ -30,13 +38,18 @@ public class EventMaker : MonoBehaviour
 
     private void CheckTrash()
     {
-        if(Gamestate.Instance.getFishIndexCapacity() >= 3)
+        if(Gamestate.Instance.getFishIndexCapacity() >= 3 && !turtleSpawned)
         {
+            turtleSpawned = true;
             Vector3 turtlePosition = Camera.main.transform.forward * - 5;
-            FishSpawner.Instance.SpawnTurtle(turtlePosition);
-
+            turtle = FishSpawner.Instance.SpawnTurtle(turtlePosition);
+            turtle.GetComponent<FollowerAI>().setDialogWaypoint(0);
         }
     }
+
+
+
+
 
     private void CheckVulkan(){
         if(Gamestate.Instance.VulkanTrashCollected == 2 ){
