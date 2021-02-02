@@ -20,6 +20,7 @@ public sealed class Gamestate : MonoBehaviour
         
     // General Data
     public int SCAN_DURATION_IN_SECONDS = 3;
+    public float BASIC_FISH_SPEED = 0.01f;
 
     // Progress List
     private List<string> FishIndex = new List<string>();

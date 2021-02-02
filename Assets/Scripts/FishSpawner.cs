@@ -9,8 +9,6 @@ public sealed class FishSpawner : MonoBehaviour
     private static readonly object padlock = new object();
 
     public List<GameObject> newFish;
-
-    public GameObject VulkanCrabs;
     public GameObject VulkanShells;
 
     public GameObject turtle;
@@ -60,10 +58,6 @@ public sealed class FishSpawner : MonoBehaviour
         turtle.transform.position = position;
         turtle.SetActive(true);
         return turtle;
-    }
-
-    public void SpawnVulkanCrabs(){
-        VulkanCrabs.SetActive(true);
     }
 
     public void SpawnVulkanShells(){

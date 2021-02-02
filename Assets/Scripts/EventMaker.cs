@@ -12,8 +12,8 @@ public class EventMaker : MonoBehaviour
 
     public GameObject standard_fish;
     public GameObject shark;
-
     private GameObject turtle;
+    public GameObject Crab;
 
     void Start()
     {
@@ -55,8 +55,8 @@ public class EventMaker : MonoBehaviour
         if(Gamestate.Instance.VulkanTrashCollected == 2 ){
             FishSpawner.Instance.SpawnVulkanShells();
         }
-        if(Gamestate.Instance.VulkanTrashCollected == 4){
-            FishSpawner.Instance.SpawnVulkanCrabs();
+        if(Gamestate.Instance.VulkanTrashCollected == 4 && !VulkanSmoke.activeInHierarchy){
+            FishSpawner.Instance.spawnFishes(Crab, 10);
             VulkanSmoke.SetActive(true);
         }
     }

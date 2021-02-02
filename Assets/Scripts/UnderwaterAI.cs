@@ -15,14 +15,21 @@ public class UnderwaterAI : MonoBehaviour
     public float  strength = .5f;
     public float speed;
 
+    public bool OceanFloor;
+
     public List<GameObject> underwaterArea = new List<GameObject>();
 
 
 
     void Start()
     {
-        GameObject newFish = Instantiate(fish_prefab, transform.position, Quaternion.identity);
+        if(speed <= 0){
+            speed = Gamestate.Instance.BASIC_FISH_SPEED;
+        }
+        if(fish_prefab != null){
+            GameObject newFish = Instantiate(fish_prefab, transform.position, Quaternion.identity);
         newFish.transform.parent = transform;
+        }
         chooseUnderwaterLevel();
     }
 
@@ -45,7 +52,14 @@ public class UnderwaterAI : MonoBehaviour
             }
 
 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+            if(OceanFloor){
+
+                transform.position = new Vector3(
+                    transform.position.x,
+                    Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y, 
+                    transform.position.z);
+            }
         }
         
 
@@ -81,7 +95,7 @@ public class UnderwaterAI : MonoBehaviour
     public Vector3 chooseNewTarget(GameObject underwaterArea)
     {
 
-       float minX =  underwaterArea.GetComponent<BoxCollider>().bounds.min.x;
+       float minX = underwaterArea.GetComponent<BoxCollider>().bounds.min.x;
        float minY = underwaterArea.GetComponent<BoxCollider>().bounds.min.y;
        float minZ = underwaterArea.GetComponent<BoxCollider>().bounds.min.z;
 
@@ -93,6 +107,10 @@ public class UnderwaterAI : MonoBehaviour
         float x = Random.Range(minX, maxX);
         float y = Random.Range(minY, maxY);
         float z = Random.Range(minZ, maxZ);
+
+        if(OceanFloor){
+            y = Terrain.activeTerrain.SampleHeight(new Vector3(x, y, z)) + Terrain.activeTerrain.GetPosition().y;
+        }
 
        return new Vector3(x, y, z);
 
