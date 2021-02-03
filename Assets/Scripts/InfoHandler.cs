@@ -23,6 +23,9 @@ public sealed class InfoHandler : MonoBehaviour
     private float ScanStartTime;
     private float ScanTimePartial; // 1/7 der scanzeit -> 6 lampen + alle grün
 
+    // Sound
+    public AudioSource audioSource;
+
 
     // Singleton functions
     InfoHandler(){
@@ -74,6 +77,7 @@ public sealed class InfoHandler : MonoBehaviour
         ScanStartTime = Time.time;
         ScanEndTime = ScanStartTime + ScanTimeInSeconds;
         ScanTimePartial = ScanTimeInSeconds / 7.0f;
+        infoReceived = false;
     }
 
     public void UpdateScanProgress(){
@@ -118,8 +122,11 @@ public sealed class InfoHandler : MonoBehaviour
 
     private void EndScan()
     {
-        infoReceived = true;
-        ColorAllProgressLamps(ProgressGreen);
+        if(!infoReceived){
+            audioSource.Play();
+            infoReceived = true;
+            ColorAllProgressLamps(ProgressGreen);
+        }
     }
 
     public void AbortScan()
@@ -127,10 +134,12 @@ public sealed class InfoHandler : MonoBehaviour
         isScanning = false;
         //TODO: rot blinken
         ColorAllProgressLamps(ProgressOff);
+        infoReceived = false;
     }
 
     public void ResetInfoText(){
         setInfoText("Nothing Scanned");
+        infoReceived = false;
     }
 
 }

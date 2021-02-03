@@ -1093,6 +1093,8 @@ GameObject:
   - component: {fileID: 1220839975925229032}
   - component: {fileID: 5680880309793467504}
   - component: {fileID: 1644247706757411736}
+  - component: {fileID: 8070717964029470550}
+  - component: {fileID: 910320858239060743}
   m_Layer: 0
   m_Name: Loggerhead 18
   m_TagString: Untagged
@@ -1157,6 +1159,67 @@ MonoBehaviour:
   - {fileID: 0}
   activeAudioClip: 0
   audioSource: {fileID: 0}
+--- !u!114 &8070717964029470550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263283806708131535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e111038e690d6694a9541ca8b8a52b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CustomReticle: {fileID: 0}
+  nameForIndex: "Meeresschildkr\xF6te"
+  infoText: "Art: Meeresschildkr\xF6te<br><br>Gattung: Chelonioidea<br><br>Lebensraum:
+    Tropische und Subtropische Meere"
+--- !u!65 &910320858239060743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263283806708131535}
+  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47907475, y: 0.1875894, z: 0.6379216}
+  m_Center: {x: 0.0072562844, y: -0.050036788, z: 0.18103921}
 --- !u!1 &8352941359150714155
 GameObject:
   m_ObjectHideFlags: 0

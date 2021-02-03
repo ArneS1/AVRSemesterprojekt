@@ -17,6 +17,9 @@ public class UnderwaterAI : MonoBehaviour
 
     public bool OceanFloor;
 
+    public bool Hunter;
+    public string PreyName;
+    private bool isHunting;
     public List<GameObject> underwaterArea = new List<GameObject>();
 
 
@@ -36,58 +39,93 @@ public class UnderwaterAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (target != null)
-        {
-            Vector3 goalVector = target.transform.position - transform.position;
-            if (goalVector != Vector3.zero)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(goalVector);
-                float str = Mathf.Min(strength * Time.deltaTime, 1);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
-            }
-            else
-            {
-                chooseUnderwaterLevel();
-            }
+                Vector3 goalVector = target.transform.position - transform.position;
+                if (goalVector != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(goalVector);
+                    float str = Mathf.Min(strength * Time.deltaTime, 1);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+                }
+                else
+                {
+                    chooseUnderwaterLevel();
+                }
 
 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
-            if(OceanFloor){
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+                if(OceanFloor){
 
-                transform.position = new Vector3(
-                    transform.position.x,
-                    Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y, 
-                    transform.position.z);
+                    transform.position = new Vector3(
+                        transform.position.x,
+                        Terrain.activeTerrain.SampleHeight(transform.position) + Terrain.activeTerrain.GetPosition().y, 
+                        transform.position.z);
+                }
             }
-        }
         
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Terrain"))
+        switch(other.tag)
         {
-            chooseUnderwaterLevel();
-        } else if (other.CompareTag("pathTarget")) {
-            chooseUnderwaterLevel();
+            case "Terrain":
+                chooseUnderwaterLevel();
+                break;
+            case "pathTarget":
+                chooseUnderwaterLevel();
+                break;
+            case "Fish":
+                if(isHunting)
+                {
+                    isHunting = false;
+                    speed /= 3;
+                    other.gameObject.SetActive(false);
+                }
+                break;
         }
     }
 
     public GameObject chooseUnderwaterLevel()
     {
+        if(Hunter && !isHunting){
+            float randomHunt = Random.Range(0.00f, 1.00f);
+            if(randomHunt <= Gamestate.Instance.HUNTER_CHANCE_TO_HUNT){
+                isHunting = true;
+                speed *= 3;
+                choosePrey();
+            } else {
+                    if (underwaterArea.Count > 1 )
+                    {
+                        int r = Random.Range(0, underwaterArea.Count);
+                        target = Instantiate(target, chooseNewTarget(underwaterArea[r]), Quaternion.identity);
+                    } 
+                    else
+                    {
+                        target = Instantiate(target, chooseNewTarget(underwaterArea[0]), Quaternion.identity);
+                    }
+                } 
+        } else {
+            if (underwaterArea.Count > 1 )
+                    {
+                        int r = Random.Range(0, underwaterArea.Count);
+                        target = Instantiate(target, chooseNewTarget(underwaterArea[r]), Quaternion.identity);
+                    } 
+                    else
+                    {
+                        target = Instantiate(target, chooseNewTarget(underwaterArea[0]), Quaternion.identity);
+                    }
+        }
         if (underwaterArea.Count > 1 )
         {
             int r = Random.Range(0, underwaterArea.Count);
-            target = Instantiate(target, chooseNewTarget(underwaterArea[r]), Quaternion.identity);
             return underwaterArea[r];
         } 
         else
         {
-            target = Instantiate(target, chooseNewTarget(underwaterArea[0]), Quaternion.identity);
             return underwaterArea[0];
-
         }
 
     }
@@ -114,5 +152,22 @@ public class UnderwaterAI : MonoBehaviour
 
        return new Vector3(x, y, z);
 
+    }
+
+    private void choosePrey(){
+        UnderwaterAI[] potential_prey_AIs = FindObjectsOfType<UnderwaterAI>();
+        List<GameObject> potential_prey = new List<GameObject>();
+        int i = 0;
+        foreach (var scannable in potential_prey_AIs)
+        {
+            if(scannable.gameObject.name.StartsWith(PreyName)){
+                i++;
+                potential_prey.Add(scannable.gameObject);
+            }
+        }
+        int r = Random.Range(0,i-5);
+
+        target = potential_prey[r];
+        Debug.Log("target found: " + target.name);
     }
 }

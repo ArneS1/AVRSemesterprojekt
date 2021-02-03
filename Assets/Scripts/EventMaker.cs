@@ -19,8 +19,8 @@ public class EventMaker : MonoBehaviour
 
     void Start()
     {
-        FishSpawner.Instance.spawnFishes(standard_fish, 100);
-        FishSpawner.Instance.spawnFishes(shark, 5);
+        FishSpawner.Instance.spawnFishes(standard_fish, 150);
+        FishSpawner.Instance.spawnFishes(shark, 10);
         FishSpawner.Instance.spawnFishes(Octopus, 10);
     }
 

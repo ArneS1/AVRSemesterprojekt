@@ -11,14 +11,10 @@ public class Scannable : XRSimpleInteractable
     //ScanState must include done state so it doesnt instantly restart.
     private int ScanState = 0; // 0 - not scanned; 1 - scanning; 2 - done;
     private float ScanEndTimeInMilliseconds;
-    public int ScanTimeInSeconds;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(ScanTimeInSeconds == 0){
-            ScanTimeInSeconds = Gamestate.Instance.SCAN_DURATION_IN_SECONDS;
-        }
     }
 
     // Update is called once per frame
@@ -49,8 +45,8 @@ public class Scannable : XRSimpleInteractable
     {
         Debug.Log("Scan started");
         ScanState = 1;
-        ScanEndTimeInMilliseconds = Time.time + ScanTimeInSeconds;
-        InfoHandler.Instance.StartScan(ScanTimeInSeconds);
+        ScanEndTimeInMilliseconds = Time.time + Gamestate.Instance.SCAN_DURATION_IN_SECONDS;
+        InfoHandler.Instance.StartScan(Gamestate.Instance.SCAN_DURATION_IN_SECONDS);
 
     }
 
