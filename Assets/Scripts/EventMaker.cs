@@ -14,11 +14,14 @@ public class EventMaker : MonoBehaviour
     public GameObject shark;
     private GameObject turtle;
     public GameObject Crab;
+    public GameObject Octopus;
+
 
     void Start()
     {
         FishSpawner.Instance.spawnFishes(standard_fish, 100);
         FishSpawner.Instance.spawnFishes(shark, 5);
+        FishSpawner.Instance.spawnFishes(Octopus, 10);
     }
 
     // Update is called once per frame

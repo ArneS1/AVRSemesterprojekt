@@ -13,6 +13,8 @@ public class ScannerOnOff : MonoBehaviour
     public InputHelpers.Button TriggerButton = InputHelpers.Button.None;
     public InputHelpers.Button GrabButton = InputHelpers.Button.None;
 
+    public GameObject Hand;
+
     private bool previousPress = false;
     // Start is called before the first frame update
     void Start()
@@ -49,5 +51,7 @@ public class ScannerOnOff : MonoBehaviour
         ScannerToCollect.SetActive(false);
         ScannerTool.SetActive(true);
         Gamestate.Instance.flag_scannerCollected = true;
+        Hand.SetActive(false);
+
     }
 }
