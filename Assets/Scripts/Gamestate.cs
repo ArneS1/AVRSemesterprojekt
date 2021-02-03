@@ -17,7 +17,8 @@ public sealed class Gamestate : MonoBehaviour
     public bool flag_fishingNetCollected;
     public bool flag_firstFishScanned;
     public bool flag_firstTabletScanned;
-    public bool flag_playerIsAtShip;
+    public bool flag_playerReachedShip;
+    public bool flag_playerReachedVulkan;
         
     // General Data
     public int SCAN_DURATION_IN_SECONDS = 3;

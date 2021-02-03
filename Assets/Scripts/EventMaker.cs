@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EventMaker : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public GameObject VulkanSmoke;
     private bool menuInitialized;
     private bool turtleSpawned;
@@ -18,9 +16,14 @@ public class EventMaker : MonoBehaviour
     public int Crab_number;
     public GameObject Octopus;
     public int Octopus_number;
+    public GameObject Whale;
+    public int Whale_number;
 
     public GameObject random_trash_prefab;
     public int random_trash_number;
+
+    public string FinalerAuftrag;
+
 
     //Turtle Kram
     public GameObject Turtle;
@@ -51,7 +54,7 @@ public class EventMaker : MonoBehaviour
     private void CheckFish(){
         if(Gamestate.Instance.flag_firstFishScanned && !menuInitialized){
             menuInitialized = true;
-            UpdateTabletText("Aktiver Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.");
+            UpdateTabletText("Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.");
         }
 
 
@@ -64,7 +67,7 @@ public class EventMaker : MonoBehaviour
             clipsPlayed.Add(2);
         }
 
-        if(Gamestate.Instance.flag_playerIsAtShip && clipsPlayed.Contains(2) && !clipsPlayed.Contains(3)){
+        if(Gamestate.Instance.flag_playerReachedShip && clipsPlayed.Contains(2) && !clipsPlayed.Contains(3)){
             startTurtleDialog(3);
             clipsPlayed.Add(3);
         }
@@ -117,12 +120,17 @@ public class EventMaker : MonoBehaviour
             clipsPlayed.Add(10);
         }
 
+        if(Gamestate.Instance.TrashCollected == 11 && !clipsPlayed.Contains(4) && Gamestate.Instance.getFishIndexCapacity() >= Gamestate.Instance.NumberOfFishToScan){
+            FindObjectOfType<MissionTableScript>().Auftrag = FinalerAuftrag;
+            UpdateTabletText(FinalerAuftrag);
+            Spawner.Instance.spawnFishes(Whale, Whale_number);
+        }
 
     }
 
     private void CheckTrash()
     {
-        if(Gamestate.Instance.getFishIndexCapacity() >= 1 && !turtleSpawned)
+        if(Gamestate.Instance.getFishIndexCapacity() >= 2 && !turtleSpawned)
         {
             Debug.Log("spawned");
             turtleSpawned = true;
@@ -134,11 +142,11 @@ public class EventMaker : MonoBehaviour
             clipsPlayed.Add(0);
         }
 
-        if(Gamestate.Instance.getFishIndexCapacity() >= 10 && !clipsPlayed.Contains(1))
+        if(Gamestate.Instance.TrashCollected >= 2 && !clipsPlayed.Contains(1))
         {
             startTurtleDialog(1);
             clipsPlayed.Add(1);
-            Spawner.Instance.spawnFishes(Octopus, 10);
+            Spawner.Instance.spawnFishes(Octopus, Octopus_number);
         }
     }
 
@@ -163,12 +171,15 @@ public class EventMaker : MonoBehaviour
             Spawner.Instance.SpawnVulkanShells();
         }
         if(Gamestate.Instance.VulkanTrashCollected == 4 && !VulkanSmoke.activeInHierarchy){
-            Spawner.Instance.spawnFishes(Crab, 10);
+            Spawner.Instance.spawnFishes(Crab, Crab_number);
             VulkanSmoke.SetActive(true);
         }
     }
 
     public void UpdateTabletText(string newText){
         FindObjectOfType<MissionTableScript>().UpdateText(newText);
+        if(!newText.StartsWith("Gut")){
+            InfoHandler.Instance.MessageWithLights("NEUER AUFTRAG! KOMM AN BOARD!");
+        }
     }
 }

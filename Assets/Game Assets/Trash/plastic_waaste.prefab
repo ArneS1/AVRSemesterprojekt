@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4914820436000119297}
   - component: {fileID: 7467044775898895642}
   - component: {fileID: 8059686887622036476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8445620689118789060}
   - component: {fileID: 4208932578781790711}
   - component: {fileID: 2890743392382900486}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2044913512156957528}
   - component: {fileID: 6437079695785155164}
   - component: {fileID: 4504136402271407886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 8528437534890690840}
   - component: {fileID: 7183403083376978741}
   - component: {fileID: 2686675012329599652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 3171087019484849012}
   - component: {fileID: 3855310086949662647}
   - component: {fileID: 1399698907154782074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 10652769166217356}
   - component: {fileID: 7437363083455807333}
   - component: {fileID: 4063849078144776056}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,9 +486,9 @@ GameObject:
   - component: {fileID: 7622695853206743420}
   - component: {fileID: -746525333479632410}
   - component: {fileID: 1558167102649989848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: plastic_waaste
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -639,7 +639,7 @@ GameObject:
   - component: {fileID: 9010442292734766139}
   - component: {fileID: 357706412094249637}
   - component: {fileID: 8210301804863129210}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 6744279437420797229}
   - component: {fileID: 5946276489790600970}
   - component: {fileID: 4614818036636454039}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 2333897236460759893}
   - component: {fileID: 4271632775156119454}
   - component: {fileID: 4189929522201393611}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 5132268787950904709}
   - component: {fileID: 7664434787566631487}
   - component: {fileID: 9078684541080877867}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 969597870564122970}
   - component: {fileID: 3857828482097252367}
   - component: {fileID: 7322764592830001395}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 4333185244756057736}
   - component: {fileID: 4363186544720232644}
   - component: {fileID: 7088608500776412796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 452843616810613309}
   - component: {fileID: 300615935323340720}
   - component: {fileID: 4085744806591248813}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 2733386491613310985}
   - component: {fileID: 190802080642151363}
   - component: {fileID: 8913955458040947550}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 709688533304649817}
   - component: {fileID: 2969932806629996965}
   - component: {fileID: 5738986128386266262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Torus.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

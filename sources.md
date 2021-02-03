@@ -30,6 +30,8 @@ Yeti Crab - Animalpackdeluxev1 - https://unitygamedeveloper.com/unity-assets/ani
 
 Vulkan Smoke - EffectTexturesAndPrefabs - Effect textures and prefabs - Magicpot Inc.
 
+Buckelwal - Humpback whale - Humpback whale - janpec
+
 # Sounds
 scannerLightSound - https://freesound.org/people/anthonychartier2020/sounds/341278/
 

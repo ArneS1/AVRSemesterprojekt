@@ -73,7 +73,7 @@ public class Scannable : XRSimpleInteractable
         if(this.gameObject.CompareTag("Tablet") && !Gamestate.Instance.flag_firstTabletScanned){
             Gamestate.Instance.flag_firstTabletScanned = true;
             this.infoText = "Dein Missions-Tablet. <br>Wenn hier kein Auftrag steht, erforsche das Meer!<br>Es gibt viel zu entdecken.";
-            FindObjectOfType<EventMaker>().UpdateTabletText("Sehr Gut! <br><br>Oben auf deinem Scanner ist ein Display mit Informationen zu dem gescannten Lebewesen.<br><br> Tauche ab und scanne deinen ersten Fisch!<br><br>Komme danach erstmal wieder an Board.");
+            FindObjectOfType<EventMaker>().UpdateTabletText("Gut Gemacht! <br><br>Oben auf deinem Scanner ist ein Display mit Informationen zu dem gescannten Lebewesen.<br><br> Tauche ab und scanne deinen ersten Fisch!<br><br>Komme danach erstmal wieder an Board.");
         }
     }
         

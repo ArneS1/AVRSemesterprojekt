@@ -20,11 +20,11 @@ public class FollowerAI : MonoBehaviour
     public AudioSource audioSource;
     private bool isRoaming;
 
-    public List<GameObject> roamingTargets = new List<GameObject>();
-
     public float distanceToPlayer;
     public GameObject boatPostion;
+    public GameObject vulkanPosition;
     private bool boatSequenzActive = false;
+    private bool vulkanSequenzActive = false;
 
     public GameObject player;
 
@@ -79,6 +79,11 @@ public class FollowerAI : MonoBehaviour
             isInDialog = false;
             isDialog = false;
             target = boatPostion;
+        } else if(vulkanSequenzActive)
+        {
+            isInDialog = false;
+            isDialog = false;
+            target = vulkanPosition;
         }
         else
         {
@@ -88,10 +93,15 @@ public class FollowerAI : MonoBehaviour
 
     internal void activateBoatSequenz()
     {
-        speed = 0.01f;
         boatSequenzActive = true;
         startDialogAudio();
 
+    }
+
+    internal void activateVulkanSequenz()
+    {
+        vulkanSequenzActive = true;
+        startDialogAudio();
     }
 
     private void Move()

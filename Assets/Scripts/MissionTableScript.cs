@@ -6,17 +6,15 @@ using UnityEngine.UI;
 public class MissionTableScript : MonoBehaviour
 {
     public Text MissionTableText;
+    public string Auftrag;
     private bool isMenuActive;
+    private float MenuClosingTime;
+    public float MenuActiveForSeconds;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
-        //TODO: wenn menu 120s lang an ist ausmachen
+        UnloadMenu();
     }
 
     private void OnTriggerEnter(Collider other){
@@ -44,12 +42,15 @@ public class MissionTableScript : MonoBehaviour
         {
             menu += "<br>" + fish;
         }
+        MenuClosingTime = Time.time + MenuActiveForSeconds;
         UpdateText(menu);
     }
 
     private void UnloadMenu(){
-        isMenuActive = false;
-        UpdateText("Aktiver Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.");
+        if(Time.time >= MenuClosingTime && isMenuActive){
+            isMenuActive = false;
+            UpdateText(Auftrag); 
+        }
     }
 
 }

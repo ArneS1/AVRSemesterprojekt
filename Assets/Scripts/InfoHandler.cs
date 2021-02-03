@@ -17,6 +17,7 @@ public sealed class InfoHandler : MonoBehaviour
     public Material ProgressOff;
     public Material ProgressRed;
     public Material ProgressGreen;
+    public Material ProgressMessageReceived;
     private bool isScanning;
     public bool infoReceived;
     private float ScanEndTime;
@@ -140,6 +141,11 @@ public sealed class InfoHandler : MonoBehaviour
     public void ResetInfoText(){
         setInfoText("Nothing Scanned");
         infoReceived = false;
+    }
+
+    public void MessageWithLights(string message){
+        ColorAllProgressLamps(ProgressMessageReceived);
+        setInfoText(message);
     }
 
 }
