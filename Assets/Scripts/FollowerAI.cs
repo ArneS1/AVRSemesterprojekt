@@ -6,11 +6,14 @@ public class FollowerAI : MonoBehaviour
 {
     private GameObject target;
     public float  strength = .5f;
+    public float speed;
     public List<GameObject> targets = new List<GameObject>();
     public GameObject DialogTarget;
 
-    private bool isDialog;
+    public bool isDialog;
     private bool isInDialog;
+
+    public GameObject PlasticWaste;
     
     public List<AudioClip> audioClips = new List<AudioClip>();
     public int activeAudioClip = 0;
@@ -21,6 +24,9 @@ public class FollowerAI : MonoBehaviour
     void Start()
     {
         target = DialogTarget;
+        if(speed == 0){
+            speed = Gamestate.Instance.BASIC_FISH_SPEED;
+        }
     }
 
     // Update is called once per frame
@@ -65,24 +71,19 @@ public class FollowerAI : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(goalVector);
                 float str = Mathf.Min(strength * Time.deltaTime, 1);
                 transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
-
-                if (isDialog && !isInDialog)
-                {
-                    startDialogAudio();
-                }
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
 
         }
     }
 
-    private void startDialogAudio()
+    public void startDialogAudio()
     {
         isInDialog = true;
-        Debug.Log("Play Audio sound");
-        audioSource.clip = audioClips[activeAudioClip];
-        audioSource.Play();
+        //Debug.Log("Play Audio sound");
+        //audioSource.clip = audioClips[activeAudioClip];
+        //audioSource.Play();
         StartCoroutine(waitForSound(audioSource));
 
     }
@@ -122,6 +123,10 @@ public class FollowerAI : MonoBehaviour
     {
         isDialog = false;
         ChooseNewTarget();
+    }
+
+    public void ActivatePlasticWaste(){
+        PlasticWaste.SetActive(true);
     }
     
 }

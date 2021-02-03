@@ -18,6 +18,7 @@ TagManager:
   - Tablet
   - Terrain
   - Piler
+  - SunkenBoat
   layers:
   - Default
   - TransparentFX

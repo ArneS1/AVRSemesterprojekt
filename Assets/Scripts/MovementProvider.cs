@@ -115,4 +115,10 @@ public class MovementProvider : LocomotionProvider
 
         characterController.Move(gravityVector * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other){
+        if(other.CompareTag("SunkenBoat")){
+            Gamestate.Instance.flag_playerIsAtShip = true;
+        }
+    }
 }

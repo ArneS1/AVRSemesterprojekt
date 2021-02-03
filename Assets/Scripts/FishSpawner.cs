@@ -11,8 +11,6 @@ public sealed class FishSpawner : MonoBehaviour
     public List<GameObject> newFish;
     public GameObject VulkanShells;
 
-    public GameObject turtle;
-
     public GameObject level_one;
 
     FishSpawner(){
@@ -52,12 +50,6 @@ public sealed class FishSpawner : MonoBehaviour
         } else {
             Debug.Log("no new Fish to Spawn");
         }
-    }
-
-    public GameObject SpawnTurtle(Vector3 position){
-        turtle.transform.position = position;
-        turtle.SetActive(true);
-        return turtle;
     }
 
     public void SpawnVulkanShells(){
