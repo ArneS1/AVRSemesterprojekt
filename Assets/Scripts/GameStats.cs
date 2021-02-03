@@ -14,7 +14,7 @@ public class GameStats : MonoBehaviour
     {
         if (Gamestate.Instance.TrashCollected == 5)
         {
-            FishSpawner.Instance.SpawnNewFish(new Vector3(2, -18, 5));
+            Spawner.Instance.SpawnNewFish(new Vector3(2, -18, 5));
         }
     }
 }

@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class FollowerAI : MonoBehaviour
 {
-    private GameObject target;
-    public float  strength = .5f;
-    public float speed;
+    public GameObject target;
+    public float strength = .5f;
+    public float speed = 0.01f;
     public List<GameObject> targets = new List<GameObject>();
     public GameObject DialogTarget;
 
-    public bool isDialog;
-    private bool isInDialog;
+    public bool isDialog = false;
+    public bool isInDialog;
 
     public GameObject PlasticWaste;
-    
-    public List<AudioClip> audioClips = new List<AudioClip>();
+
     public int activeAudioClip = 0;
 
     public AudioSource audioSource;
+    private bool isRoaming;
+
+    public List<GameObject> roamingTargets = new List<GameObject>();
+
+    public float distanceToPlayer;
+    public GameObject boatPostion;
+    private bool boatSequenzActive = false;
+
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         target = DialogTarget;
-        if(speed == 0){
+        if (speed == 0) {
             speed = Gamestate.Instance.BASIC_FISH_SPEED;
         }
     }
@@ -32,60 +40,28 @@ public class FollowerAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        Debug.Log("Distance to player: " + distanceToPlayer);
         Move();
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("at Goal und isDialog: " + isDialog);
 
-        Debug.Log("other.CompareTag(pathTarget)" + other.CompareTag("pathTarget"));
-        if (other.CompareTag("pathTarget") && !isDialog)
+        if (other.CompareTag("pathTarget"))
         {
-            ChooseNewTarget();
-        } 
-        else if (other.CompareTag("pathTarget") && isDialog)
-        {
-            startDialogAudio();
-        }
-    }
-
-
-
-    private void Move()
-    {
-        if(target.transform.position.y < -1 )
-        {
-            Vector3 goalVector = target.transform.position - transform.position;
-            if (goalVector != Vector3.zero)
+            if (isDialog)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(-goalVector);
-                float str = Mathf.Min(strength * Time.deltaTime, 1);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+                audioSource.Play();
+                StartCoroutine(waitForSound(audioSource));
 
-
-            } 
-            else
+            } else if (isRoaming)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(goalVector);
-                float str = Mathf.Min(strength * Time.deltaTime, 1);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+                chooseRoamingPoint();
             }
-
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
-
         }
-    }
-
-    public void startDialogAudio()
-    {
-        isInDialog = true;
-        //Debug.Log("Play Audio sound");
-        //audioSource.clip = audioClips[activeAudioClip];
-        //audioSource.Play();
-        StartCoroutine(waitForSound(audioSource));
-
+        
     }
 
     //Funktion die den Mainthread nicht blockiert und auf etwas wartet
@@ -97,12 +73,95 @@ public class FollowerAI : MonoBehaviour
             yield return null;
         }
         //Audio is done, set inDialog false
-        isInDialog = false;
-        isDialog = false;
+
+        if (boatSequenzActive)
+        {
+            isInDialog = false;
+            isDialog = false;
+            target = boatPostion;
+        }
+        else
+        {
+            EndDialog();
+        }
     }
 
-    private void ChooseNewTarget()
+    internal void activateBoatSequenz()
     {
+        speed = 0.01f;
+        boatSequenzActive = true;
+        startDialogAudio();
+
+    }
+
+    private void Move()
+    {
+        if (target.transform.position.y < -1)
+        {
+            Vector3 goalVector = target.transform.position - transform.position;
+            
+            if (goalVector != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(-goalVector);
+                float str = Mathf.Min(strength * Time.deltaTime, 1);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+            }
+            else
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(goalVector);
+                float str = Mathf.Min(strength * Time.deltaTime, 1);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, str);
+            }
+
+
+            float additionalSpeed;
+            if (boatSequenzActive)
+            {
+                if (distanceToPlayer <= 10f)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
+                }
+            } 
+            else
+            {
+                if (distanceToPlayer >= 30f)
+                {
+                    additionalSpeed = 0.2f;
+                }
+                else
+                {
+                    additionalSpeed = 0f;
+                }
+
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed + additionalSpeed);
+            }
+
+
+        }
+    }
+
+    public void startDialogAudio()
+    {
+        speed = 0.2f;
+        setDialogWaypoint();
+        isDialog = true;
+        isInDialog = true;
+        isRoaming = false;   
+    }
+
+    
+
+    private void startRoaming()
+    {
+        speed = 0.01f;
+        Debug.Log("Turtle starts roaming");
+        isRoaming = true;
+        chooseRoamingPoint();
+    }
+
+    private void chooseRoamingPoint()
+    {
+        Debug.Log("got roaming point");
         GameObject newTarget = target;
         while (newTarget == target)
         {
@@ -112,17 +171,17 @@ public class FollowerAI : MonoBehaviour
         target = newTarget;
     }
 
-    public void setDialogWaypoint(int clip)
+
+    public void setDialogWaypoint()
     {
-        activeAudioClip = clip;
-        isDialog = true;
         target = DialogTarget;
     }
 
     public void EndDialog()
     {
+        isInDialog = false;
         isDialog = false;
-        ChooseNewTarget();
+        startRoaming();
     }
 
     public void ActivatePlasticWaste(){

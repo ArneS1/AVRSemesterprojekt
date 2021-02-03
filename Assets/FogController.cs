@@ -10,6 +10,8 @@ public class FogController : MonoBehaviour
     public GameObject player;
     public GameObject water_surface;
     public GameObject Light;
+    private float distanceToSurface;
+    private int max_depth = -100;
 
     private float stand_fog_dens = 0.006f;
 
@@ -25,6 +27,12 @@ public class FogController : MonoBehaviour
     {
         float playerY = player.transform.position.y;
         float waterY = water_surface.transform.position.y;
+        distanceToSurface = Vector3.Distance(player.transform.position, water_surface.transform.position);
+
+        if (fogActive)
+        {
+            calculateLightAndFog();
+        }
 
         if (!fogActive && playerY < waterY) {
             activateFog();
@@ -35,25 +43,34 @@ public class FogController : MonoBehaviour
             deactivateFog();
         }
 
-        RenderSettings.fogDensity = stand_fog_dens + calculateDensity(playerY, waterY) ;
+
+
     }
 
-    private float calculateDensity(float playerY, float waterY)
+    private void calculateLightAndFog()
     {
-        int divider = -40000;
-        float distance = (waterY - playerY);
-        float fog_dens = distance / divider;
+        calculateFogColor();
+        calculateLightIntensity();
+    }
 
-        return Math.Abs(fog_dens);
+    private void calculateLightIntensity()
+    {
 
-        //TODO: Farbe vom Fog ändern oder light intensity runter drehen?
+        Debug.Log("Distance light " + distanceToSurface);
+
+        float intensity_max = 0.1f;
+
+        Light.GetComponent<Light>().intensity = intensity_max - (0.001f * distanceToSurface);
+    }
+
+    private void calculateFogColor()
+    {
     }
 
     public void activateFog()
     {
         fogActive = true;
         RenderSettings.fog = true;
-        Light.GetComponent<Light>().intensity = 0;
     }
 
     public void deactivateFog()
@@ -61,7 +78,6 @@ public class FogController : MonoBehaviour
         fogActive = false;
         RenderSettings.fog = false;
         Light.GetComponent<Light>().intensity = 1;
-
     }
 
 }
