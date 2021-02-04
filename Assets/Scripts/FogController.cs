@@ -56,8 +56,6 @@ public class FogController : MonoBehaviour
     private void calculateLightIntensity()
     {
 
-        Debug.Log("Distance light " + distanceToSurface);
-
         float intensity_max = 0.1f;
 
         Light.GetComponent<Light>().intensity = intensity_max - (0.001f * distanceToSurface);

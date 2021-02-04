@@ -23,8 +23,8 @@ public class FollowerAI : MonoBehaviour
     public float distanceToPlayer;
     public GameObject boatPostion;
     public GameObject vulkanPosition;
-    private bool boatSequenzActive = false;
-    private bool vulkanSequenzActive = false;
+    public bool boatSequenzActive = false;
+    public bool vulkanSequenzActive = false;
 
     public GameObject player;
 
@@ -74,25 +74,14 @@ public class FollowerAI : MonoBehaviour
         }
         //Audio is done, set inDialog false
 
-        if (boatSequenzActive)
-        {
-            isInDialog = false;
-            isDialog = false;
-            target = boatPostion;
-        } else if(vulkanSequenzActive)
-        {
-            isInDialog = false;
-            isDialog = false;
-            target = vulkanPosition;
-        }
-        else
-        {
-            EndDialog();
-        }
+        Debug.Log("vulkanistaktiv: " + vulkanSequenzActive);
+   
+        EndDialog();
     }
 
     internal void activateBoatSequenz()
     {
+        vulkanSequenzActive = false;
         boatSequenzActive = true;
         startDialogAudio();
 
@@ -100,8 +89,10 @@ public class FollowerAI : MonoBehaviour
 
     internal void activateVulkanSequenz()
     {
+        boatSequenzActive = false;
         vulkanSequenzActive = true;
         startDialogAudio();
+
     }
 
     private void Move()
@@ -125,16 +116,16 @@ public class FollowerAI : MonoBehaviour
 
 
             float additionalSpeed;
-            if (boatSequenzActive)
+            if (boatSequenzActive || vulkanSequenzActive)
             {
-                if (distanceToPlayer <= 10f)
+                if (distanceToPlayer <= 20f)
                 {
                     transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed);
                 }
             } 
             else
             {
-                if (distanceToPlayer >= 30f)
+                if (distanceToPlayer >= 15f)
                 {
                     additionalSpeed = 0.2f;
                 }
@@ -189,9 +180,23 @@ public class FollowerAI : MonoBehaviour
 
     public void EndDialog()
     {
+
         isInDialog = false;
         isDialog = false;
-        startRoaming();
+        Debug.Log("vulkanistaktiv: " + vulkanSequenzActive);
+        if (boatSequenzActive)
+        {
+            target = boatPostion;
+        }
+        else if (vulkanSequenzActive)
+        {
+
+            target = vulkanPosition;
+        } 
+        else
+        {
+            startRoaming();
+        }
     }
 
     public void ActivatePlasticWaste(){

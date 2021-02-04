@@ -14,18 +14,13 @@ public class ToolController : MonoBehaviour
     public GameObject pliers;
 
     private bool fishingNetEquipped = false;
-    private bool pliersEquipped = false;
+    public bool pliersEquipped = false;
 
     private bool toolSwitched;
 
     private bool isTouchingBackpack = false;
     private bool isTouchingToolbelt = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

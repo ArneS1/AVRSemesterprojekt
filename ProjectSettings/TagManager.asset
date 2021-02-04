@@ -19,6 +19,7 @@ TagManager:
   - Terrain
   - Piler
   - SunkenBoat
+  - Plier
   layers:
   - Default
   - TransparentFX

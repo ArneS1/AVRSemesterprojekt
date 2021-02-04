@@ -18,6 +18,8 @@ public class EventMaker : MonoBehaviour
     public int Octopus_number;
     public GameObject Whale;
     public int Whale_number;
+    public GameObject atlantischer_hering;
+    public int atlantischer_hering_number;
 
     public GameObject random_trash_prefab;
     public int random_trash_number;
@@ -41,6 +43,8 @@ public class EventMaker : MonoBehaviour
         Spawner.Instance.spawnFishes(shark, shark_number);
 
         Spawner.Instance.spawnTrash(random_trash_prefab, random_trash_number);
+
+        Spawner.Instance.spawnFishes(atlantischer_hering, atlantischer_hering_number);
     }
 
     // Update is called once per frame
@@ -54,6 +58,7 @@ public class EventMaker : MonoBehaviour
     private void CheckFish(){
         if(Gamestate.Instance.flag_firstFishScanned && !menuInitialized){
             menuInitialized = true;
+            FindObjectOfType<MissionTableScript>().Auftrag = "Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.";
             UpdateTabletText("Auftrag:<br> Scanne so viele Lebewesen wie möglich, damit das Institut Informationen über diese Stelle des Meeres erfährt.<br><br>Halte den Scanner an das Tablett um die Daten abzurufen.");
         }
 
@@ -74,8 +79,11 @@ public class EventMaker : MonoBehaviour
 
         if(clipsPlayed.Contains(3) && !Turtle.GetComponent<FollowerAI>().PlasticWaste.activeInHierarchy && !clipsPlayed.Contains(4)){
             startTurtleDialog(4);
+            Turtle.GetComponent<FollowerAI>().activateVulkanSequenz();
             clipsPlayed.Add(4);
         }
+
+
 
 
         // Play mikroplastik
@@ -125,6 +133,8 @@ public class EventMaker : MonoBehaviour
             UpdateTabletText(FinalerAuftrag);
             Spawner.Instance.spawnFishes(Whale, Whale_number);
         }
+
+        
 
     }
 
