@@ -25,6 +25,7 @@ public class EventMaker : MonoBehaviour
     public int random_trash_number;
 
     public string FinalerAuftrag;
+    public GameObject EndGameButton;
 
 
     //Turtle Kram
@@ -50,9 +51,14 @@ public class EventMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckFish();
-        CheckTrash();
-        CheckVulkan();
+        if(!Gamestate.Instance.flag_whaleSpawned){
+            CheckFish();
+            CheckTrash();
+            CheckVulkan();
+        } else if(Gamestate.Instance.flag_whaleScanned){
+            EndScene();
+        }
+
     }
 
     private void CheckFish(){
@@ -87,51 +93,57 @@ public class EventMaker : MonoBehaviour
 
 
         // Play mikroplastik
-        if (Gamestate.Instance.TrashCollected == 1 && !clipsPlayed.Contains(5))
+        if (Gamestate.Instance.TrashCollected >= 1 && !clipsPlayed.Contains(5))
         {
             startTurtleDialog(5);
             clipsPlayed.Add(5);
         }
 
         // Play mikroplastik
-        if (Gamestate.Instance.TrashCollected == 3 && !clipsPlayed.Contains(6))
+        if (Gamestate.Instance.TrashCollected >= 3 && !clipsPlayed.Contains(6))
         {
             startTurtleDialog(6);
             clipsPlayed.Add(6);
         }
 
         // Play mülleimer
-        if (Gamestate.Instance.TrashCollected == 5 && !clipsPlayed.Contains(7))
+        if (Gamestate.Instance.TrashCollected >= 5 && !clipsPlayed.Contains(7))
         {
             startTurtleDialog(7);
             clipsPlayed.Add(7);
         }
 
         // Play plastik korallen
-        if (Gamestate.Instance.TrashCollected == 7 && !clipsPlayed.Contains(8))
+        if (Gamestate.Instance.TrashCollected >= 7 && !clipsPlayed.Contains(8))
         {
             startTurtleDialog(8);
             clipsPlayed.Add(8);
         }
 
         // Play schildkröte verwechseln
-        if (Gamestate.Instance.TrashCollected == 9 && !clipsPlayed.Contains(9))
+        if (Gamestate.Instance.TrashCollected >= 9 && !clipsPlayed.Contains(9))
         {
             startTurtleDialog(9);
             clipsPlayed.Add(9);
         }
 
         // Play was können tuen
-        if (Gamestate.Instance.TrashCollected == 10 && !clipsPlayed.Contains(10))
+        if (Gamestate.Instance.TrashCollected >= 10 && !clipsPlayed.Contains(10))
         {
             startTurtleDialog(10);
             clipsPlayed.Add(10);
         }
 
-        if(Gamestate.Instance.TrashCollected == 11 && !clipsPlayed.Contains(4) && Gamestate.Instance.getFishIndexCapacity() >= Gamestate.Instance.NumberOfFishToScan){
+        if(Gamestate.Instance.TrashCollected >= 11
+            && clipsPlayed.Contains(4)
+            && Gamestate.Instance.getFishIndexCapacity() >= Gamestate.Instance.NumberOfFishToScan
+            && !Gamestate.Instance.flag_whaleSpawned
+            && Camera.main.transform.position.y >= 1)
+        {
             FindObjectOfType<MissionTableScript>().Auftrag = FinalerAuftrag;
             UpdateTabletText(FinalerAuftrag);
             Spawner.Instance.spawnFishes(Whale, Whale_number);
+            Gamestate.Instance.flag_whaleSpawned = true;
         }
 
         
@@ -191,5 +203,15 @@ public class EventMaker : MonoBehaviour
         if(!newText.StartsWith("Gut")){
             InfoHandler.Instance.MessageWithLights("NEUER AUFTRAG! KOMM AN BOARD!");
         }
+    }
+
+    private void EndScene(){
+        UpdateTabletText("Vielen Dank fürs Spielen!<br><br> Du hast " 
+        + Gamestate.Instance.getFishIndexCapacity() 
+        + " verschiedene Fische gescannt.<br>Du hast " 
+        + Gamestate.Instance.TrashCollected 
+        + " Stücke Müll gesammelt.<br><br> Der mittlere Knopf bringt dich zurück zum Startmenü.");
+
+        EndGameButton.SetActive(true);
     }
 }

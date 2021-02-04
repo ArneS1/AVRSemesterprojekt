@@ -1747,9 +1747,8 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Steuerung:\n\nFortbewegen: Linker Stick + Blickrichtung\n\nUmsehen: rechter
-    Stick \n\nZange: G\xFCrtel greifen mit rechtem Controller\n\nKescher: R\xFCcken
-    greifen mit rechtem Controller\n\nMen\xFC schlie\xDFen: Secondary Button linker
-    Controller\n\n\n"
+    Stick \n\nZange: G\xFCrtel greifen mit rechtem Controller\n\nMen\xFC schlie\xDFen:
+    Secondary Button linker Controller\n\n\n"
 --- !u!114 &2959127675298994952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,8 +2271,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aufgaben:\n- Kescher finden\n- Zange finden\n- 5x M\xFCll sammeln (Neuer
-    fisch wird erscheinen)\n- 2 verschiedene Fische entdecken\n"
+  m_Text: "Aufgaben:\n- 6 Fische Scannen\n- Der Schildkr\xF6te folgen\n- 11x M\xFCll
+    sammeln\n"
 --- !u!114 &7855546367084602784
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,13 +25,6 @@ public class VegetationSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public Vector3 choosePointInArea(GameObject areaToSpawn)
     {
 

@@ -32,11 +32,6 @@ public class UnderwaterAI : MonoBehaviour
         {
             speed = Gamestate.Instance.BASIC_FISH_SPEED;
         }
-        if (fish_prefab != null)
-        {
-            GameObject newFish = Instantiate(fish_prefab, transform.position, Quaternion.identity);
-            newFish.transform.parent = transform;
-        }
         chooseUnderwaterLevel();
     }
 
@@ -70,6 +65,14 @@ public class UnderwaterAI : MonoBehaviour
         }
 
 
+    }
+
+    public void SpawnSelf(){
+        if (fish_prefab != null)
+        {
+            GameObject newFish = Instantiate(fish_prefab, transform.position, Quaternion.identity);
+            newFish.transform.parent = transform;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -109,12 +112,10 @@ public class UnderwaterAI : MonoBehaviour
                 if (underwaterArea.Count > 1)
                 {
                     int r = Random.Range(0, underwaterArea.Count);
-                    //target = Instantiate(target, chooseNewTarget(underwaterArea[r]), Quaternion.identity);
                     initialiseTarget(r);
                 }
                 else
                 {
-                    //target = Instantiate(target, chooseNewTarget(underwaterArea[0]), Quaternion.identity);
                     initialiseTarget(0);
 
                 }
@@ -125,13 +126,11 @@ public class UnderwaterAI : MonoBehaviour
             if (underwaterArea.Count > 1)
             {
                 int r = Random.Range(0, underwaterArea.Count);
-                //target = Instantiate(target, chooseNewTarget(underwaterArea[r]), Quaternion.identity);
                 initialiseTarget(r);
 
             }
             else
             {
-                //target = Instantiate(target, chooseNewTarget(underwaterArea[0]), Quaternion.identity);
                 initialiseTarget(0);
 
             }

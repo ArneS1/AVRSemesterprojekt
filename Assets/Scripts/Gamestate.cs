@@ -19,6 +19,8 @@ public sealed class Gamestate : MonoBehaviour
     public bool flag_firstTabletScanned;
     public bool flag_playerReachedShip;
     public bool flag_playerReachedVulkan;
+    public bool flag_whaleSpawned;
+    public bool flag_whaleScanned;
         
     // General Data
     public int SCAN_DURATION_IN_SECONDS = 3;
@@ -67,6 +69,9 @@ public sealed class Gamestate : MonoBehaviour
         if(!FishIndex.Contains(name)){
             FishIndex.Add(name);
             flag_firstFishScanned = true;
+            if(name == "Buckelwal"){
+                flag_whaleScanned = true;
+            }
         }
     }
     public List<string> getFishIndex(){

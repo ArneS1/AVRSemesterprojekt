@@ -61,7 +61,9 @@ public sealed class Spawner : MonoBehaviour
     {
         for (int i = 0; i < n; i++)
         {
-            Instantiate(fish, fish.GetComponent<UnderwaterAI>().chooseNewTarget(fish.GetComponent<UnderwaterAI>().chooseUnderwaterLevel()), Quaternion.identity).transform.parent = FishObjectCollector.transform;
+            GameObject newFish = Instantiate(fish, fish.GetComponent<UnderwaterAI>().chooseNewTarget(fish.GetComponent<UnderwaterAI>().chooseUnderwaterLevel()), Quaternion.identity);
+            newFish.transform.parent = FishObjectCollector.transform;
+            newFish.GetComponent<UnderwaterAI>().SpawnSelf();
         }
     }
 
